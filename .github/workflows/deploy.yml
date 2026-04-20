@@ -1,0 +1,75 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/atb-agent-assist:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code (for docker-compose.yml)
+        uses: actions/checkout@v3
+
+      - name: Deploy to Linode via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: 172.233.88.49
+          username: root
+          password: ${{ secrets.LINODE_SSH_PASSWORD }}
+          script: |
+            mkdir -p /root/atb_agent_assist
+            cd /root/atb_agent_assist
+            
+            # Setup environment
+            echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" > .env
+            
+            # Download latest compose file from the repo
+            cat <<EOF > docker-compose.yml
+            version: '3.8'
+            services:
+              atb-assist:
+                image: ${{ secrets.DOCKERHUB_USERNAME }}/atb-agent-assist:latest
+                container_name: atb-agent-assist
+                restart: unless-stopped
+                ports:
+                  - "3001:8001"
+                env_file:
+                  - .env
+                volumes:
+                  - ./data:/app/data
+                  - ./chroma_db:/app/chroma_db
+                  - ./bm25_index.json:/app/bm25_index.json
+                healthcheck:
+                  test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+                  interval: 30s
+                  timeout: 10s
+                  retries: 3
+            EOF
+
+            # Pull and restart
+            docker compose pull
+            docker compose up -d --remove-orphans
+            
+            # Final Status
+            docker ps | grep atb-agent-assist
