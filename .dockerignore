@@ -1,0 +1,23 @@
+# Ignore local development artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.git/
+.github/
+.gitignore
+
+# Ignore local database/persistence folders
+# These should be handled via volumes, not baked into the image
+chroma_db/
+data/kb/
+data/ingestion_state.json
+bm25_index.json
+
+# Ignore scratch files
+scratch/
+backup/
+tests/
+eval_v2_log.txt
+atb_agent_assist_demo.html
+index_v2.html

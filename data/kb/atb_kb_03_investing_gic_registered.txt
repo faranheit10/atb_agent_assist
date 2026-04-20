@@ -1,0 +1,192 @@
+ATB FINANCIAL KNOWLEDGE BASE — DOCUMENT 3
+INVESTING — GICs, TFSA, RRSP, RESP, RRIF, FHSA
+Last updated: March 2026
+Source: atb.com (public product pages)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION A: GUARANTEED INVESTMENT CERTIFICATES (GICs)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+All ATB GICs:
+- Principal and returns are fully guaranteed by ATB Financial (backed by Government of Alberta)
+- Can be held in registered plans: TFSA, RRSP, RESP, RRIF, FHSA
+- Interest calculated on daily balance, paid per schedule (monthly, annually, or at maturity)
+- Minimum deposit: $1,000 for non-registered; $500 for registered (TFSA/RRSP etc.); $100 for Generation Account holders
+
+───────────────────────────────────────
+1. NON-REDEEMABLE GIC (Highest rates, locked in)
+───────────────────────────────────────
+Description: Fixed-term investment with the highest available rates. Cannot be withdrawn before maturity (except in case of account holder's death).
+
+Terms available: 30 days to 5 years
+Available for: Non-registered, TFSA, RRSP, RESP, RRIF
+
+Current base rates (standard, subject to change):
+  - 18-month non-registered or RRSP GIC: 3.70%
+
+Current promotional offer (November 3, 2025 – March 31, 2026):
+  - 1, 2, and 3-year non-redeemable, non-registered GICs
+  - Total rate during first 90 days: up to 5.20% (base rate + 2.20% bonus)
+  - Bonus rate of 2.20% annualized applies to eligible net new funds for the first 90 days
+  - Bonus payment = principal × 2.20% × 90/365 days, paid as a one-time lump sum into client's active chequing or savings account
+  - Maximum bonus eligible funds: $1,000,000 per client (aggregate across all GICs in campaign)
+  - Bonus GIC only available for NON-REGISTERED accounts (not TFSA/RRSP/FHSA/RRIF/RESP)
+  - Client must maintain an active ATB chequing or savings account to receive bonus payout
+
+Eligible accounts for bonus payout: Unlimited, ATB Advantage, No-Fee All-In Digital, Freedom, Generation, Basic, Pay As You Go, Springboard Savings
+
+Note: Non-redeemable means the principal cannot be accessed until maturity. Choose a term that fits the client's liquidity needs.
+
+───────────────────────────────────────
+2. SPRINGBOARD GIC® (Redeemable, Escalating Rate)
+───────────────────────────────────────
+Description: A flexible, redeemable GIC with a rate that escalates each year. Good for clients who want guaranteed returns but might need access to funds.
+
+Key features:
+  - Interest rate rises each year (escalating structure rewards clients for staying invested)
+  - Can be redeemed annually (at anniversary dates) with no penalty
+  - Redeemable in event of account holder's death at any time
+  - Can be held in TFSA, RRSP, RESP (individual or family plans), joint for non-registered only
+  - TFSAs: individual plans only
+
+Minimum investment: $1,000 non-registered; $500 registered; $100 Generation Account holders
+TFSA annual contribution limit (2024+): $7,000
+
+Available within registered plans:
+  - TFSA: earn interest tax-free
+  - RRSP: tax-deferred growth
+  - RESP: tax-deferred; interest taxed on withdrawal in beneficiary's hands
+  - RRIF: suitable for clients converting RRSP — minimum annual withdrawals required
+
+───────────────────────────────────────
+3. PERSONAL CASHABLE GIC (Most Flexible)
+───────────────────────────────────────
+Description: A GIC that can be cashed before maturity without penalty (at any time). Lower rate than non-redeemable, but maximum flexibility.
+
+Key features:
+  - No penalty for early withdrawal
+  - Principal and interest fully guaranteed
+  - Suitable for clients who might need liquidity but want a better rate than savings accounts
+  - Available within RRSP, TFSA, RRIF (see RRIF details below)
+
+RRIF use case: For clients converting a mature RRSP to a RRIF, the Personal Cashable GIC within a RRIF still earns tax-deferred interest while meeting minimum annual withdrawal requirements.
+
+Withdrawals from RRIF: Minimum annual withdrawal amounts are regulated by the government and are based on age. Excess withdrawals above minimum are subject to withholding tax.
+
+───────────────────────────────────────
+4. REDEEMABLE GIC (Intermediate Flexibility)
+───────────────────────────────────────
+Description: Can be withdrawn annually at anniversary dates. Competitive rates with moderate flexibility.
+Available within: TFSA, RRSP, RRIF
+Terms: 1–5 years
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION B: REGISTERED PLANS — OVERVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+───────────────────────────────────────
+TAX-FREE SAVINGS ACCOUNT (TFSA)
+───────────────────────────────────────
+Annual contribution limit (2024 and 2025): $7,000 per year
+Lifetime cumulative room: Varies by year the client turned 18 (contact ATB for personalized calculation)
+Growth: All interest, dividends, and capital gains are TAX-FREE
+Withdrawals: Tax-free at any time; withdrawn amount can be re-contributed the following calendar year
+Eligible investment products at ATB: Springboard GIC, Non-Redeemable GIC, Redeemable GIC, Savings Account, Compass Portfolios
+
+Common client question: "How much TFSA room do I have?"
+  - Client can check unused room in their Canada Revenue Agency (CRA) MyAccount
+  - ATB advisors can help estimate but cannot access CRA data directly
+
+───────────────────────────────────────
+REGISTERED RETIREMENT SAVINGS PLAN (RRSP)
+───────────────────────────────────────
+Purpose: Save for retirement with tax-deductible contributions; growth is tax-deferred
+Contribution limit: 18% of previous year's earned income, minus pension adjustment (limit set annually by CRA)
+2025 RRSP limit: $32,490 (confirm with CRA)
+
+Deadline: 60 days after year-end (typically March 1 of following year)
+RRSP loans: ATB offers RRSP loans (up to $75,000) for clients who want to catch up on unused contribution room
+
+Spousal RRSP: Available — contributions made to a spouse's RRSP can reduce the contributor's taxable income
+
+Maturity: RRSP must be converted to a RRIF, annuity, or cashed by December 31 of the year the client turns 71.
+
+Available GIC products: Springboard GIC, Non-Redeemable GIC, Redeemable GIC, Personal Cashable GIC
+
+───────────────────────────────────────
+REGISTERED EDUCATION SAVINGS PLAN (RESP)
+───────────────────────────────────────
+Purpose: Save for a child's post-secondary education
+Types: Individual plan (one beneficiary) or Family plan (multiple beneficiaries)
+Government grants: Canada Education Savings Grant (CESG) — 20% match on first $2,500/year ($500/year grant); additional grants for lower-income families
+Lifetime CESG limit per beneficiary: $7,200
+Lifetime RESP contribution limit per beneficiary: $50,000
+
+ATB RESP products: Springboard RESP GIC (3-year and 5-year terms), Deposit Account (variable rate), Fixed Rate Non-Redeemable Term Account
+Interest: Tax-deferred in the plan; taxed in the hands of the student when withdrawn (typically at very low tax rates)
+
+───────────────────────────────────────
+REGISTERED RETIREMENT INCOME FUND (RRIF)
+───────────────────────────────────────
+Purpose: Convert RRSP into retirement income
+Conversion: RRSP must be converted to RRIF by end of year client turns 71
+Minimum withdrawals: Government-regulated minimum amounts must be withdrawn each year (increases with age)
+Withdrawals above minimum: Subject to withholding tax
+Growth: Remaining funds continue to accumulate tax-deferred
+
+ATB RRIF products: Fixed Rate Non-Redeemable, Fixed Rate Redeemable, Cashable (Personal Cashable GIC), variable rate daily interest
+
+───────────────────────────────────────
+FIRST HOME SAVINGS ACCOUNT (FHSA)
+───────────────────────────────────────
+Purpose: Help first-time home buyers save for a down payment with combined TFSA + RRSP benefits
+Annual contribution limit: $8,000
+Lifetime limit: $40,000
+Tax treatment: Contributions are tax-deductible (like RRSP); withdrawals for qualifying home purchase are tax-free (like TFSA)
+Eligibility: Must be a first-time home buyer; must be a Canadian resident; must be 18–71 years old
+Unused annual room: Can carry forward up to $8,000 of unused room to next year (max carryforward $8,000 in addition to that year's $8,000)
+Products at ATB: GIC options available; rates posted on ATB registered investment rates page
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION C: COMPASS PORTFOLIOS (Mutual Fund Investments)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ATB offers a range of Compass Portfolios — pre-built, diversified investment portfolios for clients who want professionally managed investments.
+
+Portfolio options (from most conservative to most aggressive):
+1. Compass Conservative Income Portfolio — High fixed-income, minimal equity; shielded from market fluctuations; stable, modest returns; designed for clients near or in retirement
+2. Compass Conservative Portfolio — High fixed-income + small equity exposure; balances income with stability
+3. Compass Balanced Portfolio — Balanced mix of fixed-income and equity; steady growth potential; income and capital appreciation
+4. Compass Balanced Growth Portfolio — Moderate risk; longer-term income investments; modest, stable returns
+5. Compass Growth Portfolio — Higher equity exposure; Canadian and international equities; higher risk, higher potential return
+6. Compass Maximum Growth Portfolio — Fully diversified international equities; highest growth potential; highest risk
+
+All Compass Portfolios can be held in TFSA, RRSP, RESP, RRIF, FHSA or non-registered accounts.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMMON CUSTOMER QUESTIONS — INVESTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Q: What's the difference between a TFSA and an RRSP?
+A: Both shelter investment growth from tax, but differently. RRSP contributions reduce your taxable income now; withdrawals are taxed. TFSA contributions don't reduce taxable income, but all growth and withdrawals are completely tax-free. Best use: RRSP for clients in higher tax brackets now who expect lower income in retirement; TFSA for all clients for flexible, tax-free savings.
+
+Q: Can I hold a GIC inside my TFSA?
+A: Yes. ATB offers several GIC products (Springboard, Redeemable, Personal Cashable) that can be held within a TFSA. Interest earned is completely tax-free.
+
+Q: Can I withdraw from my TFSA and re-contribute?
+A: Yes, but not in the same calendar year. Withdrawn amounts can be re-contributed starting the following January 1st.
+
+Q: What happens to my RRSP when I turn 71?
+A: You must convert your RRSP to a RRIF, purchase an annuity, or cash it out by December 31 of the year you turn 71. Most clients convert to a RRIF to continue tax-deferred growth while receiving mandatory annual withdrawals.
+
+Q: Can I make a lump-sum GIC contribution?
+A: Yes. GICs are typically purchased with a single lump sum. Minimum deposit applies based on account type ($100 for Generation, $500 for registered plans, $1,000 for non-registered standard).
+
+Q: What is the current GIC rate?
+A: Rates change regularly. For current rates, ATB's rates page at atb.com/resources/rates is the source of truth. Client Care at 1-800-332-8383 can also provide current rates. (Note: as of early 2026, promotional rates of up to 5.20% apply for 1, 2, and 3-year non-redeemable non-registered GICs for the first 90 days on net new funds.)
+
+Q: What is the TFSA contribution limit for 2025?
+A: $7,000 for 2025 (same as 2024). Cumulative room depends on the client's age and past contributions. CRA MyAccount is the authoritative source for individual TFSA room.
+
+Q: Is my GIC covered if ATB fails?
+A: ATB is owned by the Province of Alberta. All ATB deposits — including GICs — are fully guaranteed by the Government of Alberta. ATB is not a CDIC member, but Alberta's provincial guarantee provides equivalent protection for Albertan depositors.

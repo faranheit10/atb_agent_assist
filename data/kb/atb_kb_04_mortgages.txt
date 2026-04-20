@@ -1,0 +1,180 @@
+ATB FINANCIAL KNOWLEDGE BASE — DOCUMENT 4
+MORTGAGES & HOME BORROWING
+Last updated: March 2026
+Source: atb.com (public product pages), wowa.ca, rateshop.ca
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ATB MORTGAGE OVERVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ATB Financial is Alberta's largest locally-owned financial institution, operating exclusively in Alberta (including national parks: Banff, Jasper, Waterton). ATB mortgage experts are available virtually or in person at over 170 branches.
+
+Current indicative rates (March 2026 — always confirm with ATB as rates change):
+  - 5-year fixed (insured): approximately 4.54%
+  - Lowest available rate: approximately 3.65%
+  - Variable rate: Based on ATB prime rate (currently variable; Bank of Canada cut overnight rate to 2.25% in late October 2025)
+
+Rate hold: ATB holds a rate for 120 days from application date. If rates drop before funding, client receives the lower rate.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MORTGAGE TYPES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+───────────────────────────────────────
+1. CLOSED FIXED-RATE MORTGAGE
+───────────────────────────────────────
+Interest rate is locked for the full term. Payments are predictable and stable.
+Term options: 6 months to 7 years
+Amortization: Up to 25 years (standard); up to 30 years for first-time buyers purchasing newly constructed homes (insured)
+Best for: Clients who value payment certainty and expect rates to rise.
+Prepayment privilege: Up to 20% of original mortgage balance per year, paid as a lump sum or via increased payments (no penalty on this amount)
+Breaking the mortgage early: Penalty applies (interest rate differential or 3 months' interest — whichever is greater)
+
+───────────────────────────────────────
+2. OPEN FIXED-RATE MORTGAGE
+───────────────────────────────────────
+Fixed rate, but can be paid off in full at any time without penalty.
+Higher rate than closed mortgage (premium paid for flexibility)
+Best for: Clients expecting to sell their home or pay off the mortgage within the current term
+
+───────────────────────────────────────
+3. VARIABLE-RATE MORTGAGE
+───────────────────────────────────────
+Interest rate moves with ATB prime rate (which tracks Bank of Canada overnight rate)
+Monthly payment amount stays the same; the proportion going to principal vs. interest changes with rate changes
+Best for: Clients who expect rates to fall or who can tolerate payment uncertainty
+
+Prepayment: Same 20% annual lump sum privilege applies
+
+───────────────────────────────────────
+4. HOME EQUITY LINE OF CREDIT (HELOC)
+───────────────────────────────────────
+A revolving line of credit secured by the equity in the client's home.
+
+HELOC vs Flex HELOC:
+  - HELOC: Revolving LOC with a set credit limit (up to 65% of home value), secured by home equity. Fixed credit limit.
+  - Flex HELOC: Credit limit increases automatically as the client pays down their mortgage (up to 65% of home value). More dynamic access to growing equity.
+
+Key rules:
+  - Maximum borrowing: 65% of home's current appraised value (as a standalone HELOC)
+  - Combined (mortgage + HELOC): up to 80% loan-to-value
+  - Interest rate: Variable, based on ATB prime rate (lower than unsecured LOC because secured by home)
+  - Repayment: Interest-only monthly payments required; no fixed repayment schedule for principal
+  - Can be added to an existing mortgage — advisable to set up before funds are needed to avoid future applications
+
+Common HELOC uses: Home renovations, debt consolidation, education funding, emergency expenses, down payment on investment property, investment opportunities
+
+Fees to open a HELOC:
+  - Home appraisal: typically starting at $275 (varies by home size and location)
+  - Land Titles registration fees
+  - Legal fees
+  - Annual Percentage Rate (APR) affected by setup fees
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HIGH RATIO vs CONVENTIONAL MORTGAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HIGH RATIO MORTGAGE:
+  - Down payment: Less than 20% of purchase price (minimum 5%)
+  - Mortgage default insurance: MANDATORY (purchased through CMHC, Sagen, or Canada Guaranty)
+  - Premium: Added to mortgage amount; ranges from 0.60% to 4.00% depending on down payment size
+  - Benefit: Access to better (insured) mortgage rates; 30-year amortization available for first-time buyers of new builds
+
+CONVENTIONAL MORTGAGE:
+  - Down payment: 20% or more of purchase price
+  - Mortgage default insurance: NOT required
+  - Standard rates apply; up to 25-year amortization (30-year only for first-time buyers of new builds with insured mortgage)
+  - Stress test required
+
+MINIMUM DOWN PAYMENT REQUIREMENTS (Canada-wide):
+  - Purchase price $500,000 or less: 5% down
+  - Purchase price $500,001 to $999,999: 5% on first $500,000 + 10% on remainder
+  - Purchase price $1,000,000 or more: 20% minimum
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MORTGAGE STRESS TEST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Required for: All new mortgages and second/recreational properties
+NOT required for: Straight mortgage transfer/switch where balance and amortization don't change, OR insured mortgage transfers
+
+Stress test rate (federal guideline): The higher of:
+  - The contracted mortgage rate + 2%, OR
+  - The Bank of Canada's minimum qualifying rate (5.25% as a floor, may change)
+
+Purpose: Ensures clients can still afford payments if rates increase.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PREPAYMENT PRIVILEGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ATB allows up to 20% of the original mortgage balance as additional payments per year:
+  - Lump sum payments (single prepayment)
+  - Increasing regular payment amount
+  - No penalty on amounts within this 20% threshold
+  - This is higher than most major banks (many allow only 10-15%)
+
+Payment frequency options: Weekly, bi-weekly, semi-monthly, monthly
+  - Weekly or accelerated bi-weekly payments reduce total interest paid over life of mortgage (more frequent principal reduction)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SWITCHING MORTGAGE TO ATB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ATB covers switch fees up to $1,000 for mortgages transferred from another institution (straight transfer — no additional funds or amortization changes):
+  - First Canadian Title registration fees
+  - Appraisal fees up to $500 (ATB-accredited appraiser)
+  - Minimum mortgage value: $200,000
+  - Must be owner-occupied residential dwelling (personal clients only)
+  - Mortgage must be funded within 120 days of application
+  - Fees NOT covered: name changes on title, interest penalties, prepayment charges, private registration discharges, remote/virtual signing fees
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BRIDGE FINANCING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Available when: Client is buying a new home before their existing home sale closes
+Duration: Up to 45 days after purchase of new home (up to 120 days for new builds)
+Conditions: Both the sale of existing home AND purchase of new home must have conditions waived
+Purpose: Gives client access to equity from current home to close on new home before receiving sale proceeds
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SPECIAL MORTGAGE SCENARIOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Self-employed clients: ATB can qualify self-employed clients for mortgages; may require additional documentation (see mortgage expert)
+
+Investment properties (rental): Down payment 20%+ required; rental income may be factored into qualification; owner does not need to live in the building
+
+Second/vacation homes: Mortgage stress test required; can use HELOC from existing home as down payment; ATB lends in Alberta national parks (Banff, Jasper, Waterton)
+
+Mortgage renewal: Review options 120+ days before renewal date (rate holds apply); clients can switch to ATB without penalty if coming from another institution at renewal
+
+Mortgage refinancing: Access equity or change mortgage terms mid-term; prepayment penalty may apply from existing lender
+
+In-law suites & additional structures (ADUs): ATB offers mortgage solutions for additions including residential shops, in-law suites, and outbuildings
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMMON CUSTOMER QUESTIONS — MORTGAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Q: What's the difference between mortgage pre-qualification and pre-approval?
+A: Pre-qualification is a quick estimate of what you might borrow based on self-reported information — no credit check required. Pre-approval is a full credit and financial review that gives you a committed rate hold for up to 120 days — useful when making offers on a home.
+
+Q: What's the current ATB prime rate?
+A: ATB's prime rate is posted at atb.com/resources/rates. It tracks the Bank of Canada overnight rate (currently 2.25% as of late October 2025). Variable mortgage rates and lines of credit are typically priced as prime + a spread.
+
+Q: Can I make extra payments on my mortgage without penalty?
+A: Yes — up to 20% of your original mortgage balance each year. This can be done as a lump sum or by increasing your regular payment. Payments beyond 20% within a term may trigger a prepayment penalty.
+
+Q: What happens if I break my mortgage early?
+A: A prepayment penalty applies. For fixed-rate mortgages, this is typically the higher of 3 months' interest or the Interest Rate Differential (IRD). IRD is calculated based on how much lower current rates are compared to your existing rate, over the remaining term. An ATB mortgage expert can calculate the exact penalty.
+
+Q: How does a HELOC differ from a second mortgage?
+A: A HELOC is a revolving line of credit (draw and repay as needed up to the limit); a second mortgage is a fixed lump-sum loan with a repayment schedule. HELOCs have variable interest rates (lower than unsecured LOC); second mortgages can be fixed or variable. A HELOC is generally more flexible but the rate fluctuates with prime.
+
+Q: Can I use my HELOC to buy another property?
+A: Yes. If you have available HELOC room, you can use it as a down payment on an investment or recreational property, then obtain a separate mortgage for the remainder.
+
+Q: What documents do I need to apply for a mortgage?
+A: Typically: proof of income (T4s, pay stubs, tax returns for self-employed), employment letter, credit authorization, property tax assessment, and government-issued ID. An ATB expert will provide a complete list based on the client's situation.

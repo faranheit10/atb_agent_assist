@@ -1,0 +1,25 @@
+﻿python : Traceback (most recent call last):
+At line:1 char:1
++ python tests/eval/run_eval_v2.py 2>&1 | Out-File -FilePath eval_v2_lo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\GitHub\atb_agent_assist\tests\eval\run_eval_v2.py", line 106, in <module>
+    asyncio.run(run_evaluation_v2())
+  File "C:\Users\fizza\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\fizza\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fizza\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 654, in 
+run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\GitHub\atb_agent_assist\tests\eval\run_eval_v2.py", line 33, in run_evaluation_v2
+    print(f"\U0001f680 Starting v2 Evaluation (Parallel Retrieval) | {len(test_cases)} cases...")
+  File "C:\Users\fizza\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 0: character maps to <undefined>

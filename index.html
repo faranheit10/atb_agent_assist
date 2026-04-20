@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATB Agent Assist — Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-atb-navy: #003DA5;
+            --color-atb-red: #E4002B;
+            --color-bg-main: #f3f4f6;
+            --color-sidebar: #011e4d;
+            --color-glass: rgba(255, 255, 255, 0.95);
+            --color-card: #ffffff;
+            --color-text-primary: #111827;
+            --color-text-secondary: #4b5563;
+            --color-border: #e5e7eb;
+            --sidebar-width: 260px;
+            --sidebar-collapsed-width: 72px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark-theme {
+            --color-bg-main: #0f172a;
+            --color-sidebar: #020617;
+            --color-glass: rgba(15, 23, 42, 0.9);
+            --color-card: #1e293b;
+            --color-text-primary: #f8fafc;
+            --color-text-secondary: #94a3b8;
+            --color-border: #334155;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--color-bg-main);
+            color: var(--color-text-primary);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--color-sidebar);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            flex-shrink: 0;
+            z-index: 50;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar.collapsed {
+            width: var(--sidebar-collapsed-width);
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .logo-box {
+            width: 32px;
+            height: 32px;
+            background: var(--color-atb-red);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .sidebar-title {
+            font-weight: 700;
+            font-size: 16px;
+            white-space: nowrap;
+            opacity: 1;
+            transition: opacity 0.2s;
+        }
+
+        .collapsed .sidebar-title {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .nav-list {
+            flex: 1;
+            padding: 10px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 4px;
+        }
+
+        .nav-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .nav-btn.active {
+            background: var(--color-atb-navy);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-footer {
+            padding: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-action {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: rgba(255,255,255,0.7);
+            transition: 0.2s;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .footer-action:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .footer-label {
+            font-size: 13px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .collapsed .footer-label, .collapsed .nav-btn span {
+            opacity: 0;
+            pointer-events: none;
+            width: 0;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            background: var(--color-bg-main);
+        }
+
+        .top-bar {
+            height: 64px;
+            background: var(--color-card);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 20px;
+            justify-content: space-between;
+            color: var(--color-text-primary);
+        }
+
+        .collapse-toggle {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .collapse-toggle:hover {
+            background: #f1f5f9;
+        }
+
+        /* Views Container */
+        .view-container {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Helper Mode View */
+        .assist-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 24px;
+            height: 100%;
+            min-height: 0;
+        }
+
+        .chat-pane {
+            background: var(--color-card);
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .coaching-pane {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            overflow-y: auto;
+            padding-bottom: 40px; /* Prevent baseline clipping */
+        }
+
+        /* KB View Styling */
+        .kb-layout {
+            display: flex;
+            height: 100%;
+            gap: 24px;
+            color: var(--color-text-primary);
+        }
+
+        .kb-sidebar {
+            width: 320px;
+            background: var(--color-card);
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .kb-search {
+            padding: 16px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .kb-input {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--color-bg-main);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .kb-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+        }
+
+        .kb-item {
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .kb-item:hover {
+            background: #f8fafc;
+        }
+
+        .kb-item.active {
+            background: rgba(255,255,255,0.08); /* Subtle highlight */
+            border-left: 4px solid var(--color-atb-red);
+            border-radius: 4px 8px 8px 4px;
+        }
+        .kb-item.active .kb-item-title {
+            color: white;
+        }
+
+        .kb-item-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--color-atb-navy);
+        }
+
+        .kb-item-meta {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+        }
+
+        .kb-viewer {
+            flex: 1;
+            background: var(--color-card);
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .viewer-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-bg-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .viewer-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            line-height: 1.7;
+            font-size: 16px;
+            color: var(--color-text-primary);
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            opacity: 0.9;
+        }
+
+        /* Lite Formatting */
+        .doc-h1 { font-size: 24px; font-weight: 700; color: var(--color-atb-navy); margin-top: 0; margin-bottom: 24px; border-bottom: 2px solid var(--color-atb-red); padding-bottom: 8px; }
+        .doc-h2 { font-size: 18px; font-weight: 700; color: #1e293b; margin-top: 32px; margin-bottom: 12px; }
+        .doc-p { margin-bottom: 16px; }
+        .doc-ul { margin-bottom: 16px; padding-left: 20px; }
+        .doc-li { margin-bottom: 8px; }
+        .doc-bold-title { font-weight: 700; color: #1e293b; display: block; margin-top: 20px; }
+
+        /* Assistant Specifics */
+        .msg-bubble { 
+            padding: 12px 16px; 
+            border-radius: 12px; 
+            max-width: 80%; 
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            line-height: 1.5;
+            animation: slideIn 0.2s ease-out;
+        }
+        @keyframes slideIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+        
+        .msg-customer { background: #eff6ff; border: 1px solid #dbeafe; color: #1e40af; align-self: flex-start; }
+        .dark-theme .msg-customer { background: #1e3a8a; border: 1px solid #1e40af; color: #bfdbfe; }
+        
+        .msg-agent { background: #f9fafb; border: 1px solid #f3f4f6; color: #374151; align-self: flex-end; }
+        .dark-theme .msg-agent { background: #334155; border: 1px solid #475569; color: #f1f5f9; }
+
+        .sugg-card { 
+            background: var(--color-card); 
+            border-radius: 8px; 
+            border: 1px solid var(--color-border); 
+            overflow: visible; /* Fix clipping */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 4px;
+        }
+        .sugg-header { 
+            padding: 10px 14px; 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .sugg-intent { background: #f0f9ff; color: #0369a1; }
+        .dark-theme .sugg-intent { background: #082f49; color: #7dd3fc; }
+        
+        .sugg-response { background: #f0fdf4; color: #166534; }
+        .dark-theme .sugg-response { background: #064e3b; color: #6ee7b7; }
+        
+        .sugg-kb { background: #f8fafc; color: #475569; }
+        .dark-theme .sugg-kb { background: #1e293b; color: #94a3b8; }
+        
+        .sugg-actions { background: #fffbeb; color: #b45309; }
+        .dark-theme .sugg-actions { background: #78350f; color: #fcd34d; }
+
+        .sugg-body { padding: 14px; color: var(--color-text-primary); }
+
+        .typing-dot { width: 6px; height: 6px; background: #94a3b8; border-radius: 50%; opacity: 0.4; }
+        .typing-anim { display: flex; gap: 4px; margin: 10px 0; }
+
+        /* Progress Bar styles */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--color-atb-navy);
+            transition: width 0.4s ease;
+        }
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        .status-indexed { color: #10b981; font-weight: 900; }
+        .dark-theme .status-indexed { color: #34d399; }
+        .status-processing { color: #3b82f6; }
+        .status-error { color: #ef4444; }
+
+        .kb-item-actions {
+            opacity: 0.6;
+            transition: all 0.2s;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            color: var(--color-text-secondary);
+        }
+        .kb-item:hover .kb-item-actions { opacity: 1; color: var(--color-atb-red); }
+        .kb-item-actions:hover { background: rgba(0,0,0,0.05); }
+        .dark-theme .kb-item-actions:hover { background: rgba(255,255,255,0.1); }
+
+        .actions-menu {
+            position: absolute;
+            right: 10px;
+            top: 40px;
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            z-index: 100;
+            width: 140px;
+            overflow: hidden;
+        }
+        .menu-item {
+            padding: 10px 12px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text-primary);
+        }
+        .menu-item:hover { background: var(--color-bg-main); }
+        .menu-item.danger { color: #ef4444; }
+        .menu-item.danger:hover { background: #fef2f2; color: #dc2626; }
+        .dark-theme .menu-item.danger:hover { background: #450a0a; color: #f87171; }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .modal-content {
+            background: var(--color-card);
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            width: 400px;
+            padding: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .modal-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: var(--color-text-primary); }
+        .modal-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 24px; }
+        .modal-footer { display: flex; gap: 12px; justify-content: flex-end; }
+        
+        .btn-cancel { 
+            padding: 10px 20px; border-radius: 8px; border: 1px solid var(--color-border); 
+            background: transparent; color: var(--color-text-primary); cursor: pointer; font-weight: 600;
+        }
+        .btn-delete { 
+            padding: 10px 20px; border-radius: 8px; border: none; 
+            background: #ef4444; color: white; cursor: pointer; font-weight: 700;
+        }
+        .btn-delete:hover { background: #dc2626; }
+
+        .upload-zone {
+            padding: 12px;
+            border: 2px dashed var(--color-border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .upload-zone:hover {
+            border-color: var(--color-atb-navy);
+            background: #f8fafc;
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .dark-theme ::webkit-scrollbar-thumb { background: #334155; }
+        .dark-theme ::webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .dark-theme .kb-viewer {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+        }
+        
+        .dark-theme .kb-item-title {
+            color: #f1f5f9;
+        }
+        
+        .dark-theme .kb-item:hover {
+            background: rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+<div id="root" style="display: contents;"></div>
+
+<!-- React -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+
+<script>
+const { useState, useEffect, useRef, useMemo } = React;
+const API_BASE = window.location.origin;
+
+// Icons
+const Icon = ({ name, size = 20 }) => {
+    const paths = {
+        assist: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+        kb: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5S19.832 5.477 21 6.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+        stats: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+        msg: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z",
+        search: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+        menu: "M4 6h16M4 12h16M4 18h16",
+        x: "M6 18L18 6M6 6l12 12",
+        check: "M5 13l4 4L19 7",
+        upload: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12",
+        moon: "M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z",
+        sun: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z",
+        chevronLeft: "M15 19l-7-7 7-7",
+        chevronRight: "M9 5l7 7-7 7"
+    };
+    return React.createElement('svg', { 
+        width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", 
+        strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" 
+    }, React.createElement('path', { d: paths[name] }));
+};
+
+function formatDoc(text) {
+    if (!text) return null;
+    const lines = text.split('\n');
+    const elements = [];
+    let listItems = [];
+
+    const flushList = () => {
+        if (listItems.length > 0) {
+            elements.push(React.createElement('ul', { key: 'ul-' + elements.length, className: 'doc-ul' }, listItems));
+            listItems = [];
+        }
+    };
+
+    lines.forEach((line, i) => {
+        const trimmed = line.trim();
+        if (!trimmed) {
+            flushList();
+            return;
+        }
+
+        if (trimmed.startsWith('# ')) {
+            flushList();
+            elements.push(React.createElement('h1', { key: i, className: 'doc-h1' }, trimmed.substring(2)));
+        } else if (trimmed.startsWith('## ')) {
+            flushList();
+            elements.push(React.createElement('h2', { key: i, className: 'doc-h2' }, trimmed.substring(3)));
+        } else if (trimmed.startsWith('•') || trimmed.startsWith('- ')) {
+            listItems.push(React.createElement('li', { key: i, className: 'doc-li' }, trimmed.substring(1).trim()));
+        } else if (trimmed === trimmed.toUpperCase() && trimmed.length > 5 && !trimmed.includes(' ')) {
+             // Likely a specialized header or category
+             flushList();
+             elements.push(React.createElement('strong', { key: i, className: 'doc-bold-title' }, trimmed));
+        } else if (trimmed === trimmed.toUpperCase() && trimmed.length > 5 && trimmed.split(' ').length < 5) {
+            // Document section title
+            flushList();
+            elements.push(React.createElement('h2', { key: i, className: 'doc-h2' }, trimmed));
+        } else {
+            flushList();
+            elements.push(React.createElement('p', { key: i, className: 'doc-p' }, trimmed));
+        }
+    });
+
+    flushList();
+    return elements;
+}
+
+function HelperView({ msgs, setMsgs, sugg, loading, setSugg, fetchSugg }) {
+    const [input, setInput] = useState('');
+    const [role, setRole] = useState('customer');
+    const chatRef = useRef();
+
+    useEffect(() => {
+        chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight, behavior: 'smooth' });
+    }, [msgs]);
+
+    const send = () => {
+        if (!input.trim()) return;
+        const newMsgs = [...msgs, { role, content: input.trim() }];
+        setMsgs(newMsgs);
+        setInput('');
+        if (role === 'customer') fetchSugg(newMsgs);
+    };
+
+    const useResp = (txt) => { setRole('agent'); setInput(txt); };
+
+    return React.createElement('div', { className: 'assist-grid' },
+        // Chat Section
+        React.createElement('div', { className: 'chat-pane' },
+            React.createElement('div', { ref: chatRef, style: { flex: 1, padding: 20, overflowY: 'auto', display: 'flex', flexDirection: 'column' } },
+                msgs.map((m, i) => React.createElement('div', { key: i, className: `msg-bubble msg-${m.role}` }, 
+                    m.content,
+                    React.createElement('div', { style: { fontSize: 9, opacity: 0.6, marginTop: 4, fontWeight: 700 } }, m.role.toUpperCase())
+                )),
+                loading && React.createElement('div', { className: 'typing-anim' }, [0,1,2].map(i => React.createElement('div', { key: i, className: 'typing-dot' })))
+            ),
+            React.createElement('div', { style: { padding: 16, background: 'var(--color-bg-main)', borderTop: '1px solid var(--color-border)' } },
+                React.createElement('div', { style: { display: 'flex', gap: 4, marginBottom: 8 } },
+                    ['customer', 'agent'].map(r => React.createElement('button', { key: r, onClick: () => setRole(r), style: { padding: '4px 10px', borderRadius: 6, fontSize: 11, border: '1px solid ' + (role === r ? 'var(--color-atb-navy)' : 'var(--color-border)'), background: role === r ? 'var(--color-atb-navy)' : 'var(--color-card)', color: role === r ? 'white' : 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600 } }, r.toUpperCase()))
+                ),
+                React.createElement('div', { style: { display: 'flex', gap: 10 } },
+                    React.createElement('textarea', { value: input, onChange: e => setInput(e.target.value), onKeyDown: e => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), send()), className: 'kb-input', style: { flex: 1, resize: 'none' }, placeholder: "Speak to customer...", rows: 2 }),
+                    React.createElement('button', { onClick: send, style: { padding: '0 20px', background: 'var(--color-atb-navy)', color: 'white', border: 'none', borderRadius: 8, fontWeight: 700, cursor: 'pointer' } }, 'SEND')
+                )
+            )
+        ),
+        // Coaching Section
+        React.createElement('div', { className: 'coaching-pane' },
+            !sugg ? React.createElement('div', { style: { textAlign: 'center', opacity: 0.5, marginTop: 40, fontSize: 13 } }, "Awaiting customer intent...") :
+            React.createElement(React.Fragment, null,
+                React.createElement('div', { className: 'sugg-card' },
+                    React.createElement('div', { className: 'sugg-header sugg-intent' }, "Intent: " + sugg.intent),
+                    React.createElement('div', { className: 'sugg-body' }, 
+                        React.createElement('p', { style: { fontSize: 14, margin: 0, lineHeight: 1.5 } }, sugg.summary)
+                    )
+                ),
+                sugg.suggested_responses?.length > 0 && React.createElement('div', { className: 'sugg-card' },
+                    React.createElement('div', { className: 'sugg-header sugg-response' }, "Recommended Response"),
+                    React.createElement('div', { className: 'sugg-body' },
+                        sugg.suggested_responses.map((r, i) => React.createElement('div', { key: i, onClick: () => useResp(r.text), style: { cursor: 'pointer', padding: 10, border: '1px solid var(--color-border)', borderRadius: 6, marginBottom: 8 } },
+                            React.createElement('div', { style: { fontSize: 11, fontVariant: 'all-small-caps', fontWeight: 800, color: 'var(--color-atb-red)', marginBottom: 4 } }, r.label),
+                            React.createElement('div', { style: { fontSize: 13 } }, r.text)
+                        ))
+                    )
+                ),
+                sugg.key_facts?.length > 0 && React.createElement('div', { className: 'sugg-card' },
+                    React.createElement('div', { className: 'sugg-header sugg-kb' }, "Knowledge Retrieval"),
+                    React.createElement('div', { className: 'sugg-body', style: { padding: '12px 14px 6px' } },
+                        sugg.key_facts.map((f, i) => React.createElement('div', { key: i, style: { display: 'flex', gap: 8, marginBottom: 8, fontSize: 13 } }, 
+                            React.createElement('span', { style: { color: 'var(--color-atb-navy)' } }, "•"), React.createElement('span', null, f)
+                        ))
+                    )
+                ),
+                sugg.actions?.length > 0 && React.createElement('div', { className: 'sugg-card' },
+                    React.createElement('div', { className: 'sugg-header sugg-actions' }, "Suggested Actions"),
+                    React.createElement('div', { className: 'sugg-body' },
+                        sugg.actions.map((a, i) => React.createElement('div', { key: i, style: { fontSize: 13, display: 'flex', gap: 8, marginBottom: 6 } }, 
+                            React.createElement('span', { style: { color: '#fbbf24' } }, "→"), React.createElement('span', null, a)
+                        ))
+                    )
+                )
+            )
+        )
+    );
+}
+
+function KBView() {
+    const [docs, setDocs] = useState([]);
+    const [search, setSearch] = useState('');
+    const [menuOpen, setMenuOpen] = useState(null); // filename
+    const [confirmDelete, setConfirmDelete] = useState(null); // filename
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    // Close menu when clicking outside
+    useEffect(() => {
+        const handleClick = (e) => {
+            if (!e.target.closest('.actions-menu') && !e.target.closest('.kb-item-actions')) {
+                setMenuOpen(null);
+            }
+        };
+        document.addEventListener('mousedown', handleClick);
+        return () => document.removeEventListener('mousedown', handleClick);
+    }, []);
+
+    const handleDelete = async (filename) => {
+        if (isDeleting) return;
+        setIsDeleting(true);
+        try {
+            const resp = await fetch(`${API_BASE}/api/kb/${filename}`, { method: 'DELETE' });
+            if (resp.ok) {
+                setConfirmDelete(null);
+                setMenuOpen(null);
+                fetchDocs();
+            } else {
+                const err = await resp.json();
+                alert("Delete failed: " + (err.detail || "Unknown error"));
+            }
+        } catch (e) {
+            alert("Delete failed: " + e.message);
+        } finally {
+            setIsDeleting(false);
+        }
+    };
+    const [selected, setSelected] = useState(null);
+    const [content, setContent] = useState('');
+    const [fetchLoading, setFetchLoading] = useState(false);
+    const fileInputRef = useRef();
+
+    const fetchDocs = async () => {
+        const r = await fetch(`${API_BASE}/api/kb`);
+        const data = await r.json();
+        setDocs(data);
+    };
+
+    useEffect(() => {
+        fetchDocs();
+    }, []);
+
+    // Polling for processing files
+    useEffect(() => {
+        const hasProcessing = docs.some(d => d.status === 'processing' || d.status === 'new');
+        if (hasProcessing) {
+            const timer = setInterval(fetchDocs, 2000);
+            return () => clearInterval(timer);
+        }
+    }, [docs]);
+
+    const filtered = useMemo(() => docs.filter(d => d.title.toLowerCase().includes(search.toLowerCase())), [docs, search]);
+
+    const viewDoc = async (doc) => {
+        if (doc.status === 'processing') return;
+        setSelected(doc);
+        setFetchLoading(true);
+        try {
+            const r = await fetch(`${API_BASE}/api/kb/${doc.filename}`);
+            const d = await r.json();
+            setContent(d.content);
+        } finally { setFetchLoading(false); }
+    };
+
+    const handleUpload = async (file, overwrite = false) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        try {
+            const resp = await fetch(`${API_BASE}/api/kb/upload?overwrite=${overwrite}`, {
+                method: 'POST',
+                body: formData
+            });
+            
+            if (resp.status === 409) {
+                const newName = prompt(`File "${file.name}" already exists. Enter a new name to rename, or leave as is to overwrite:`, file.name);
+                if (newName === null) return; // cancel
+                if (newName === file.name) {
+                    handleUpload(file, true);
+                } else {
+                    const renamedFile = new File([file], newName.endsWith('.txt') ? newName : newName + '.txt', { type: file.type });
+                    handleUpload(renamedFile, false);
+                }
+                return;
+            }
+            
+            fetchDocs();
+        } catch (e) {
+            alert("Upload failed: " + e.message);
+        }
+    };
+
+    return React.createElement('div', { className: 'kb-layout' },
+        React.createElement('div', { className: 'kb-sidebar' },
+            React.createElement('div', { className: 'kb-search' },
+                React.createElement('input', { className: 'kb-input', placeholder: "Search records...", value: search, onChange: e => setSearch(e.target.value), style: { marginBottom: 12 } }),
+                React.createElement('input', { type: 'file', ref: fileInputRef, style: { display: 'none' }, accept: '.txt', onChange: e => e.target.files[0] && handleUpload(e.target.files[0]) }),
+                React.createElement('button', { 
+                    onClick: () => fileInputRef.current.click(),
+                    className: 'nav-btn',
+                    style: { background: 'var(--color-atb-navy)', color: 'white', justifyContent: 'center' } 
+                }, React.createElement(Icon, { name: 'upload', size: 16 }), React.createElement('span', null, 'Upload Document'))
+            ),
+            React.createElement('div', { className: 'kb-list' },
+                filtered.map(d => React.createElement('div', { key: d.filename, className: `kb-item ${selected?.filename === d.filename ? 'active' : ''}`, onClick: () => viewDoc(d), style: { position: 'relative' } },
+                    React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' } },
+                        React.createElement('span', { className: 'kb-item-title' }, d.title),
+                        React.createElement('div', { style: { display: 'flex', gap: 6, alignItems: 'center' } },
+                            d.status === 'indexed' && React.createElement('div', { className: 'status-indexed' }, React.createElement(Icon, { name: 'check', size: 14 })),
+                            React.createElement('div', { className: 'kb-item-actions', onClick: (e) => { e.stopPropagation(); setMenuOpen(menuOpen === d.filename ? null : d.filename); } }, 
+                                React.createElement(Icon, { name: 'more-vertical', size: 16 })
+                            )
+                        )
+                    ),
+                    menuOpen === d.filename && React.createElement('div', { className: 'actions-menu' },
+                        React.createElement('div', { className: 'menu-item danger', onClick: (e) => { e.stopPropagation(); setConfirmDelete(d.filename); setMenuOpen(null); } }, 
+                            React.createElement(Icon, { name: 'trash', size: 14 }), "Delete Document"
+                        )
+                    ),
+                    React.createElement('span', { className: 'kb-item-meta' }, d.status === 'processing' ? 'Indexing...' : `${d.size_kb} KB · ${d.last_modified}`),
+                    
+                    d.status === 'processing' && React.createElement('div', { className: 'progress-container' },
+                        React.createElement('div', { className: 'progress-fill', style: { width: `${d.progress}%` } })
+                    ),
+                    
+                    d.status === 'error' && React.createElement('div', { className: 'status-error' }, 'Failed to index')
+                ))
+            ),
+            confirmDelete && React.createElement('div', { className: 'modal-overlay', onClick: () => setConfirmDelete(null) },
+                React.createElement('div', { className: 'modal-content', onClick: e => e.stopPropagation() },
+                    React.createElement('div', { className: 'modal-title' }, "Delete Document?"),
+                    React.createElement('div', { className: 'modal-desc' }, 
+                        `Are you sure you want to delete "${confirmDelete}"? This will permanently remove the file and all associated AI knowledge from the system.`
+                    ),
+                    React.createElement('div', { className: 'modal-footer' },
+                        React.createElement('button', { className: 'btn-cancel', onClick: () => setConfirmDelete(null), disabled: isDeleting }, "Cancel"),
+                        React.createElement('button', { className: 'btn-delete', onClick: () => handleDelete(confirmDelete), disabled: isDeleting }, isDeleting ? "Deleting..." : "Delete Forever")
+                    )
+                )
+            )
+        ),
+        React.createElement('div', { className: 'kb-viewer' },
+            !selected ? React.createElement('div', { style: { margin: 'auto', textAlign: 'center', opacity: 0.4 } }, React.createElement(Icon, { name: 'kb', size: 48 }), React.createElement('p', null, "Select a document to begin")) :
+            React.createElement(React.Fragment, null,
+                React.createElement('div', { className: 'viewer-header' },
+                    React.createElement('div', null,
+                        React.createElement('h3', { style: { margin: 0, fontSize: 16 } }, selected.title),
+                        React.createElement('span', { style: { fontSize: 12, opacity: 0.6 } }, selected.filename)
+                    ),
+                    fetchLoading && React.createElement('span', { style: { fontSize: 12, fontWeight: 700, color: '#003DA5' } }, "LOADING...")
+                ),
+                React.createElement('div', { className: 'viewer-content' }, fetchLoading ? null : formatDoc(content))
+            )
+        )
+    );
+}
+
+function MainApp() {
+    const [collapsed, setCollapsed] = useState(false);
+    const [theme, setTheme] = useState(localStorage.getItem('atb_theme') || 'light');
+    const [view, setView] = useState('assist');
+    const [msgs, setMsgs] = useState([{ role: "customer", content: "Hi! I need help understanding the fees for the Generation account." }]);
+    const [sugg, setSugg] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [health, setHealth] = useState(null);
+
+    useEffect(() => {
+        document.body.className = theme === 'dark' ? 'dark-theme' : '';
+        localStorage.setItem('atb_theme', theme);
+    }, [theme]);
+
+    useEffect(() => {
+        fetch(`${API_BASE}/health`).then(r => r.json()).then(setHealth).catch(() => setHealth({status:'offline'}));
+        fetchSugg(msgs);
+    }, []);
+
+    const fetchSugg = async (currentMsgs) => {
+        if (currentMsgs[currentMsgs.length-1].role !== 'customer') return;
+        setLoading(true); setSugg(null);
+        try {
+            const response = await fetch(`${API_BASE}/suggest_stream`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ conversation: currentMsgs })
+            });
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let fullText = "";
+            while (true) {
+                const { value, done } = await reader.read();
+                if (done) break;
+                fullText += decoder.decode(value, { stream: true });
+                try {
+                    let clean = fullText.trim();
+                    if (!clean.startsWith('{')) continue;
+                    if (!clean.endsWith('}')) {
+                         const q = (clean.match(/"/g) || []).length;
+                         if(q%2!==0) clean += '"';
+                         const b = (clean.match(/\{/g) || []).length - (clean.match(/\}/g) || []).length;
+                         const a = (clean.match(/\[/g) || []).length - (clean.match(/\]/g) || []).length;
+                         for(let i=0;i<a;i++) clean += ']';
+                         for(let i=0;i<b;i++) clean += '}';
+                    }
+                    const parsed = JSON.parse(clean);
+                    setSugg(parsed);
+                    setLoading(false);
+                } catch(e) {}
+            }
+        } catch(e) { setLoading(false); }
+    };
+
+    const getModelLabel = (model) => {
+        if (!model) return 'Connecting...';
+        if (model.includes('flash-lite')) return 'ATB Helper v1';
+        if (model.includes('2.5-flash')) return 'ATB Helper v2';
+        return model;
+    };
+
+    return React.createElement('div', { style: { display: 'flex', width: '100%' } },
+        // Sidebar
+        React.createElement('div', { className: `sidebar ${collapsed ? 'collapsed' : ''}` },
+            React.createElement('div', { className: 'sidebar-header' },
+                React.createElement('div', { className: 'logo-box' }, 'A'),
+                React.createElement('span', { className: 'sidebar-title' }, 'Agent Assist')
+            ),
+            React.createElement('ul', { className: 'nav-list' },
+                React.createElement('li', { className: 'nav-item' },
+                    React.createElement('button', { className: `nav-btn ${view === 'assist' ? 'active' : ''}`, onClick: () => setView('assist') },
+                        React.createElement('div', { className: 'nav-icon' }, React.createElement(Icon, { name: 'assist' })),
+                        React.createElement('span', null, 'Helper Mode')
+                    )
+                ),
+                React.createElement('li', { className: 'nav-item' },
+                    React.createElement('button', { className: `nav-btn ${view === 'kb' ? 'active' : ''}`, onClick: () => setView('kb') },
+                        React.createElement('div', { className: 'nav-icon' }, React.createElement(Icon, { name: 'kb' })),
+                        React.createElement('span', null, 'Knowledge Base')
+                    )
+                )
+            ),
+            React.createElement('div', { className: 'sidebar-footer' },
+                React.createElement('div', { className: 'footer-action', onClick: () => setTheme(theme === 'dark' ? 'light' : 'dark') },
+                    React.createElement('div', { className: 'nav-icon' }, React.createElement(Icon, { name: theme === 'dark' ? 'sun' : 'moon' })),
+                    React.createElement('span', { className: 'footer-label' }, theme === 'dark' ? 'Light Mode' : 'Dark Mode')
+                ),
+                React.createElement('div', { className: 'footer-action', onClick: () => setCollapsed(!collapsed) },
+                    React.createElement('div', { className: 'nav-icon' }, React.createElement(Icon, { name: collapsed ? 'chevronRight' : 'chevronLeft' })),
+                    React.createElement('span', { className: 'footer-label' }, 'Collapse')
+                )
+            )
+        ),
+        // Main Content
+        React.createElement('div', { className: 'main-content' },
+            React.createElement('div', { className: 'top-bar' },
+                React.createElement('div', { style: {display:'flex', alignItems:'center', gap:12} },
+                    React.createElement('h2', { style: {fontSize:18, fontWeight:600, margin:0} }, view === 'assist' ? 'Helper Mode' : 'Knowledge Base')
+                ),
+                React.createElement('div', { style: {display:'flex', alignItems:'center', gap:16} },
+                    health && React.createElement('div', { className: 'health-dot', style: { width: 8, height: 8, borderRadius: '50%', background: health.status === 'online' ? '#10b981' : '#ef4444' } }),
+                    React.createElement('span', { style: {fontSize:12, fontWeight:500, opacity:0.6} }, getModelLabel(health?.model))
+                )
+            ),
+            React.createElement('div', { className: 'view-container' },
+                view === 'assist' ? React.createElement(HelperView, { msgs, setMsgs, sugg, loading, setSugg, fetchSugg }) : React.createElement(KBView)
+            )
+        )
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(MainApp));
+</script>
+</body>
+</html>

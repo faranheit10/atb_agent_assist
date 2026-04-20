@@ -1,0 +1,243 @@
+ATB FINANCIAL KNOWLEDGE BASE — DOCUMENT 6
+CUSTOMER SERVICE, DIGITAL BANKING, ESCALATION PROCEDURES & COMPANY PROFILE
+Last updated: March 2026
+Source: atb.com (public pages)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION A: ATB FINANCIAL COMPANY PROFILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Full name: ATB Financial (Alberta Treasury Branches)
+Founded: 1938 as Alberta Treasury Branches
+Ownership: Crown corporation, owned by the Province of Alberta
+Headquarters: 10020 100th Street NW, Edmonton, Alberta
+Operates in: Alberta only (including national parks: Banff, Jasper, Waterton)
+
+Key facts:
+  - Largest financial institution based in Alberta
+  - Largest public bank in North America
+  - Over 800,000 personal and business clients served
+  - Over 170 branches across Alberta
+  - Major cities: 24 branches in Calgary, 32 branches in Edmonton, 2 in Red Deer
+  - Over 5,000 employees
+  - Total assets: Over $55 billion
+  - Deposits guaranteed fully by the Government of Alberta (NOT CDIC member)
+  - Not a federally chartered bank; regulated entirely by Government of Alberta under ATB Financial Act
+
+Deposit guarantee: All ATB deposits (chequing, savings, GICs, registered accounts) are 100% guaranteed by the Province of Alberta. This is comparable to CDIC protection offered by chartered banks, but applies only to ATB accounts.
+
+Primary service lines:
+  - Personal Banking (chequing, savings, investing, borrowing, mortgages, credit cards)
+  - Business Banking (business accounts, commercial lending, agriculture)
+  - Wealth Management (investment advice, Compass Portfolios, private banking)
+  - Mortgage Lending
+  - Insurance
+
+Recent milestone (2025): ATB Financial acquired Cormark Securities Inc. to expand investment banking activities.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION B: CONTACT & SUPPORT CHANNELS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PRIMARY CLIENT CARE LINE:
+  Phone: 1-800-332-8383
+  Available: 24/7 for urgent issues (card loss, fraud, etc.)
+  Hours (general inquiries): Business hours vary — recommend clients call during business hours for non-urgent matters
+
+CREDIT CARD ACTIVATION LINE:
+  Phone: 1-866-904-9677
+
+DIGITAL BANKING (ATB Personal):
+  Web: personal.atb.com
+  App: Available on Apple App Store and Google Play
+  To enroll: Call 1-800-332-8383 to get credentials set up
+
+IN-BRANCH APPOINTMENTS:
+  - Book online at atb.com
+  - Available in person or virtually
+  - Recommended for: Mortgage applications, complex investment advice, business banking, new account opening
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION C: DIGITAL BANKING — ATB PERSONAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ATB Personal is ATB's primary digital banking platform (web and mobile app).
+
+Key features available in ATB Personal:
+  - Account balances and 180 days of transaction history
+  - Bill payments (schedule or instant)
+  - Interac e-Transfer® (send and receive)
+  - Global Transfers (international wire transfers, $0–$15 depending on amount and destination)
+  - Transfer between ATB accounts
+  - Mobile cheque deposit (via phone camera)
+  - Loan and mortgage payment processing
+  - Credit card management: activate, lock/unlock, change PIN, view statements
+  - ATB TrackIt: budgeting, spending categories, goal tracking, debt repayment planner
+  - CRA direct deposit enrollment
+  - Open new accounts
+  - Add to investments
+  - View RRSP, TFSA, and investment account details
+  - E-statement enrollment (recommended to avoid paper statement fees)
+  - Credit score check (for existing borrowing clients)
+
+Two-factor authentication (2FA): MANDATORY for all ATB Personal users (as of recent policy update)
+  - If client cannot complete 2FA: call 1-800-332-8383 to reset
+  - If client cannot log in: start by resetting password/username; if unresolved, Client Care can assist
+
+ATB Personal app changes (May 2021): ATB Mobile app was retired; all clients now use ATB Personal app
+
+IMPORTANT: In-branch transactions that are not routine (bank drafts, USD in-branch transactions, teller-assisted) may incur fees depending on account type (e.g., $5 fee on No-Fee All-In Digital Account for in-branch transactions).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION D: DIGITAL TRANSFERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INTERAC e-TRANSFER®:
+  - Cost: $1.50 each to send (many chequing accounts include a limited or unlimited number of e-Transfers at no fee)
+  - Free to receive
+  - How: Via ATB Personal — only need recipient's email address
+  - Speed: Minutes for most recipients
+
+GLOBAL TRANSFERS (International):
+  - Cost: $0–$15 depending on amount and destination country
+  - How: Available through ATB Personal
+  - Conversion: Foreign exchange rate applied on the day the transaction is processed
+  - Up to 2.5% above Mastercard rate applies for some currency conversions
+
+CANADIAN BANK-TO-BANK TRANSFERS:
+  - Transfer to any Canadian bank account using institution code, transit number, and account number
+  - Available through ATB Personal
+
+ABM (ATM) NETWORK:
+  - ATB ABMs: Free within Alberta (for most accounts)
+  - Non-ATB ABMs (within Alberta): Regular fees apply; client notified before proceeding
+  - Non-ATB ABMs (outside Alberta, within Canada): ATB reimburses a set amount per account type (e.g., up to $4.50/withdrawal for Unlimited Account — 2 per month; up to $4.50 for ATB Advantage — 5 per month)
+  - ABMs outside Canada: $5.00 per withdrawal (Cirrus® network), plus any local ABM fees; US withdrawals reimbursed $8 once per month (Unlimited Account)
+  - Cirrus network abroad: Currency converted at 2.5% above Mastercard exchange rate
+
+VISA DEBIT:
+  - All ATB debit cards with Visa Debit logo work online, in-store worldwide, and for recurring payments
+  - Visa Secure authentication for online fraud protection
+  - Can be added to Apple Pay, Google Pay, Samsung Pay
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION E: FRAUD & SECURITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ATB ONLINE BANKING GUARANTEE:
+  In the unlikely event of unauthorized access to the client's account, ATB will restore any funds lost due to unauthorized use — provided the client followed ATB's safe banking practices.
+
+Safe banking practices clients must follow:
+  - Never share username, password, or 2FA codes with anyone (including people claiming to be ATB)
+  - Always clear browser cache after using ATB Personal on a shared computer
+  - Report any suspected unauthorized access immediately to 1-800-332-8383
+
+If a client believes their card or account has been compromised:
+  1. Lock the card immediately through ATB Personal app (lock/unlock toggle)
+  2. Call 1-800-332-8383 immediately (24/7)
+  3. ATB will investigate and reverse unauthorized transactions per Online Banking Guarantee
+
+Location-based fraud detection: ATB uses GPS and device data to flag unusual login locations (e.g., if client normally logs in from Lethbridge and suddenly logs in from Chicago, ATB may challenge identity)
+
+ATB does NOT sell, share, or trade client personal information.
+ATB does NOT permit third-party use of client information.
+ATB does NOT ask for more personal information than needed to serve the client.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION F: CUSTOMER SERVICE ESCALATION PROCEDURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TIER 1 — AGENT HANDLES DIRECTLY:
+  - Account balance inquiries
+  - Transaction history questions
+  - Card lock/unlock requests
+  - e-Transfer issues (standard delays or failures)
+  - Password/username resets (direct to digital process; escalate if unresolved)
+  - Fee inquiries (explain fee schedule; waive only if clear error by ATB)
+  - General product information (interest rates, account types, eligibility)
+  - Basic account maintenance (update contact info, e-statement enrollment)
+
+TIER 2 — WARM TRANSFER TO SPECIALIST:
+  - Mortgage applications, renewals, and rate negotiations → Mortgage Specialist
+  - Investment advice (RRSP room, portfolio selection, GIC laddering) → Investment Advisor
+  - Business banking needs → Business Banking Advisor
+  - Overdraft protection applications → Everyday Banking Advisor
+  - Complex loan applications (secured loans, debt consolidation over $50K) → Loan Specialist
+  - Private banking inquiries (clients with significant wealth/complex needs) → Private Banking Advisor
+  - Credit card disputes and chargebacks → Client Care specialist team (escalate within Client Care)
+
+TRIGGER PHRASES FOR ESCALATION:
+  - "I want to speak to a manager" → Acknowledge, document reason, transfer to Team Lead or Senior Agent
+  - "I want to close my account" → Retention attempt by current agent first; understand reason, offer solutions; escalate if client insists
+  - "I'm going to switch to another bank" → Retention conversation; understand pain point; involve specialist if rate or product issue
+  - "There was an unauthorized transaction on my account" → IMMEDIATE escalation to fraud team; advise client not to use card; file dispute
+  - "Someone called me claiming to be ATB asking for my PIN" → IMMEDIATE fraud alert; advise client not to provide any info; escalate to security team
+  - "I can't access my account" → Standard digital troubleshooting first; escalate to Technical Support if unresolved
+
+TIER 3 — FORMAL COMPLAINT PROCESS:
+  - When client is not satisfied after Tier 1 and Tier 2
+  - Document complaint in detail
+  - Provide client with ATB's formal complaint process information
+  - Client may also contact the ATB Ombudsman (internal) or OBSI (Ombudsman for Banking Services and Investments) if unresolved
+
+AGENT NOTES BEST PRACTICES:
+  - Always note the reason for the call and the resolution provided
+  - If client is calling about a recurring issue, flag account for supervisor review
+  - If fee waiver was applied, note the reason (e.g., "system error," "first-time occurrence")
+  - Never promise outcomes you cannot guarantee (e.g., "your loan will definitely be approved")
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION G: FEES QUICK REFERENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NSF fee (Non-Sufficient Funds): $10 per item (reduced from $38 effective August 2024)
+Interac e-Transfer (send): $1.50 (free with unlimited-transaction accounts)
+Interac e-Transfer (receive): Free
+Paper statements: Fee now applies — amount varies by account; clients encouraged to switch to e-statements
+Global Transfers: $0–$15 (varies by amount and destination)
+Safety deposit box: Standard fee less $12 for ATB Advantage Account holders
+In-branch transactions (No-Fee Digital Account): $5 per transaction
+Foreign ABM withdrawals: $5 per withdrawal outside Canada (plus any local ABM fee)
+HELOC appraisal: Starting at $275
+Mortgage switch fees: Covered up to $1,000 by ATB (for qualifying switches)
+Overdraft protection (if used): Greater of $4.00 or interest at 17.25% per annum
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION H: ATBPROSPER & FINANCIAL WELLNESS TOOLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ATB Prosper: ATB's savings goal tool
+  - Client sets a savings goal (e.g., emergency fund, vacation, home down payment)
+  - ATB creates a personalized savings plan
+  - Simple and gamified goal-tracking
+  - Available via ATB Personal
+
+ATB TrackIt: Built-in money management tool in ATB Personal
+  - Track spending by category
+  - Create budgets
+  - Set debt repayment goals
+  - View complete financial picture including external investments
+  - Import data from other financial institutions
+
+ATB Financial Education Resources:
+  - ATB maintains a library of financial education articles at atb.com
+  - Topics: Credit, budgeting, investing, mortgages, fraud protection, life stages (newcomers, students, seniors)
+  - Available free to all Albertans, not just ATB clients
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION I: NEWCOMERS TO CANADA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ATB has solutions specifically for newcomers to Alberta:
+  - Fee waivers and special account packages for clients who landed in Canada in the last 5 years and are Alberta residents
+  - USD chequing access available
+  - Students First LOC available for international students (with qualified Alberta-resident co-borrower)
+  - Credit Builder LOC to establish Canadian credit history ($10,000 limit, no credit check)
+  - Dedicated newcomer page at atb.com
+
+Age-based accounts summary:
+  - Under 13: Joint account with parent/guardian/grandparent only
+  - 13–17: Individual account or joint with parent/guardian/grandparent; valid ID required
+  - 18–25: Generation Account (no monthly fee)
+  - 26+: Standard account lineup
+  - 59+: Freedom Account (no monthly fee, unlimited transactions)

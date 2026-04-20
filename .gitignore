@@ -1,0 +1,10 @@
+# Evaluation results and artifacts
+tests/eval/
+*.log
+__pycache__/
+.env
+.ipynb_checkpoints/
+chroma_db/
+bm25_index.json
+
+backup/

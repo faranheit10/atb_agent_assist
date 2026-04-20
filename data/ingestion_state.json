@@ -1,0 +1,32 @@
+{
+  "atb_kb_01_chequing_savings.txt": {
+    "hash": "aed441d842b3bc4f0f41637d7fb5190c",
+    "last_ingested": "Tue Apr 21 02:31:12 2026",
+    "units": 10
+  },
+  "atb_kb_02_credit_cards.txt": {
+    "hash": "6eaae75900332fda873bc83e504454c0",
+    "last_ingested": "Tue Apr 21 02:31:12 2026",
+    "units": 10
+  },
+  "atb_kb_03_investing_gic_registered.txt": {
+    "hash": "44cf343bc3342eb30eb8938540415bfc",
+    "last_ingested": "Tue Apr 21 02:31:12 2026",
+    "units": 10
+  },
+  "atb_kb_04_mortgages.txt": {
+    "hash": "fa930dea9cc8e99b044f6252a6f58c9f",
+    "last_ingested": "Tue Apr 21 02:31:12 2026",
+    "units": 10
+  },
+  "atb_kb_05_borrowing_loans_loc.txt": {
+    "hash": "322ba0aa3b046ece5ffd34617618a654",
+    "last_ingested": "Tue Apr 21 02:31:12 2026",
+    "units": 10
+  },
+  "atb_kb_06_customer_service_digital_escalation.txt": {
+    "hash": "386310f367c1fac9111695a06a9778b7",
+    "last_ingested": "Tue Apr 21 02:31:12 2026",
+    "units": 10
+  }
+}

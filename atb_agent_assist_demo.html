@@ -1,0 +1,347 @@
+
+<style>
+@keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:.9} }
+.skel { animation: pulse 1.4s ease-in-out infinite; background: var(--color-border-tertiary); border-radius: 4px; }
+.resp-card:hover { border-color: var(--color-border-info) !important; }
+.role-btn { transition: background .15s, color .15s, border .15s; }
+textarea:focus { outline: none; border-color: var(--color-border-secondary) !important; box-shadow: 0 0 0 2px rgba(0,61,165,.1); }
+.send-btn:active { transform: scale(.97); }
+.msg-appear { animation: msgIn .2s ease-out; }
+@keyframes msgIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+</style>
+
+<script>
+const ATB_KB = `=== CHEQUING ACCOUNTS ===
+Unlimited: $15.95/mo (waived $4k min balance or student 26+ enrolled). Unlimited txns. NSF fee $10.
+ATB Advantage: Waived with $6k/mo balance. Waives World Elite CC annual fee ($120) and USD CC ($19). Up to 2.5% LOC rate discount. 5 out-of-province ABM reimbursements/mo.
+No-Fee All-In Digital: $0/mo. Needs credit approval. Bundled $5k-$50k LOC at variable prime rate. $5 fee for in-branch txns.
+Freedom: $0/mo. Age 59+. Unlimited transactions. USD banking included.
+Generation: $0/mo. Age ≤25. Unlimited transactions. GIC min $100.
+Basic: $3.95/mo. 15 included txns. $1.25 per extra.
+Pay As You Go: $0/mo fee. $1.75-2.00 per txn.
+ABM: Free at ATB ABMs in AB. Outside AB: Unlimited acct reimburses up to $4.50/withdrawal (2/mo). Outside Canada: $5/withdrawal Cirrus network.
+NSF fee: $10 (reduced from $38 effective August 2024).
+
+=== SAVINGS ===
+Springboard Savings: $0 fee. Tiered interest, base up to 0.70%. Promo Jan12-Mar31 2026: up to 4.70% total on net new deposits up to $1M. $5/txn after 1 free/mo. Not designed for daily spending.
+
+=== CREDIT CARDS (all Mastercard) ===
+Standard purchase rate: 19.90%. Cash advance: 21.90%. Foreign FX: 2.5% above Mastercard rate.
+World Elite: $120/yr (waived yr1; waived for Advantage account holders). Welcome: 40,000 pts ($200) within 60 days. Earn: 8pts/$1 travel, 6pts/$1 groceries/gas/streaming/entertainment, 2pts/$1 other. Airport lounges (1300+), travel insurance, 90-day purchase protection, extended warranty.
+Gold My Rewards: Low annual fee (waived yr1). Welcome: 10,000 pts ($50). Accelerated pts on groceries/gas/streaming/entertainment.
+Gold Cash Rewards: Low annual fee. Welcome: 5% cashback first 3mo (up to $100). Accelerated cashback groceries/gas. 1% on card-on-file. Cash back applied every January.
+US Dollar Mastercard: $19/yr (waived for Advantage holders). No FX fees on USD purchases.
+Flex Rate Mastercard: Low annual fee. Fixed 10.9% purchase rate. Up to $50k limit. Good for balance carriers.
+Secured Mastercard: No annual fee. No credit check. Security deposit required. For credit building.
+Prepaid Mastercard: No annual fee. No credit check. Preloaded. No debt.
+Points: ~0.5 cents/pt. Never expire. Redeem for travel, merch, gift cards, cash, loan/mortgage payments.
+
+=== INVESTING - GICs ===
+All GICs: Principal and returns fully guaranteed by Government of Alberta. Min $1,000 non-reg, $500 registered, $100 Generation holders.
+Non-Redeemable GIC: Locked in. 30 days to 5 years. Highest rates. Cannot withdraw early except death.
+Promo (Nov3 2025-Mar31 2026): up to 5.20% total for 1/2/3-yr non-reg non-redeemable GICs. Base + 2.20% bonus on net new funds for first 90 days. Bonus for NON-REGISTERED only. Max $1M/client. Need active ATB chequing/savings account.
+Springboard GIC: Escalating rate annually. Redeemable on anniversaries. Available in TFSA, RRSP, RESP.
+Personal Cashable GIC: Cash anytime, no penalty. Most flexible. Available in RRSP, TFSA, RRIF.
+Redeemable GIC: Annual redemption at anniversaries. 1-5 year terms.
+
+=== REGISTERED PLANS ===
+TFSA: $7,000/yr contribution limit (2024 and 2025). Tax-free growth AND withdrawals. Withdrawn room re-added next January 1. Check CRA MyAccount for room.
+RRSP: 18% of prior year earned income, max $32,490 for 2025. Contributions tax-deductible. Tax-deferred growth. Deadline: 60 days after year-end (typically March 1). Convert to RRIF/annuity by Dec31 of year turning 71. Spousal RRSP available.
+RESP: 20% CESG on first $2,500/yr ($500/yr grant). Lifetime CESG: $7,200/beneficiary. Lifetime contribution limit: $50,000/beneficiary. Individual or family plans.
+RRIF: Convert RRSP by age 71. Mandatory minimum annual withdrawals. Tax-deferred growth on remainder.
+FHSA: First-time homebuyers only. $8,000/yr, $40,000 lifetime. Tax-deductible contributions + tax-free qualifying home purchase withdrawals. Age 18-71. Carryforward up to $8k unused.
+
+=== COMPASS PORTFOLIOS (Mutual Funds) ===
+Conservative Income → Conservative → Balanced → Balanced Growth → Growth → Maximum Growth.
+Available in TFSA, RRSP, RESP, RRIF, FHSA, non-registered.
+
+=== MORTGAGES ===
+Rates (March 2026, confirm atb.com): 5-yr fixed insured ~4.54%, lowest ~3.65%, variable = prime-based.
+Rate hold: 120 days. If rates drop before funding, client gets lower rate.
+Closed Fixed: 6mo-7yr term. Up to 25yr amortization (30yr for first-time buyers of new builds, insured). 20%/yr prepayment without penalty. Breaking early: IRD or 3mo interest (whichever greater).
+Open Fixed: Can pay off anytime without penalty. Higher rate.
+Variable Rate: Moves with ATB prime. Payment stays same; principal/interest split changes.
+HELOC: Up to 65% of home value standalone (80% combined with mortgage). Variable rate (lower than unsecured LOC). Interest-only monthly payments. Appraisal fee from $275, land titles + legal fees.
+Flex HELOC: Credit limit auto-grows as mortgage is paid down.
+High ratio (under 20% down): CMHC/Sagen/Canada Guaranty insurance required. Premium 0.60%-4.00%.
+Min down payment: ≤$500k = 5%; $500k-$999,999 = 5% on first $500k + 10% on balance; $1M+ = 20%.
+Stress test: Must qualify at contracted rate + 2% or 5.25%, whichever higher.
+Switching to ATB: Covers up to $1,000 in switch fees. Min $200k mortgage. Owner-occupied only.
+Bridge financing: Up to 45 days (120 for new builds). Both properties need conditions waived.
+
+=== LINES OF CREDIT ===
+Personal LOC (Unsecured): Variable rate. Apply online or 1-800-332-8383. DTI below 42% preferred.
+HELOC (Secured): See mortgages. Lower rate than unsecured.
+Students First LOC: Post-secondary students. Up to $60,000 total ($15,000/yr). Preferred rate. 12-month grace after graduation. International students need AB-resident co-borrower. Not-for-profit Canadian or US university, min 12 weeks, 20+ hrs/wk instruction.
+Professional Students LOC: Law, medicine, dentistry, pharmacy etc. Up to $350,000. Preferred rate. 25-yr repayment after conversion. Post-grad: up to $25k ($50k for medical/dentistry) as ongoing Personal LOC.
+Credit Builder LOC: $10,000. No credit history required. For newcomers or credit rebuilders.
+LOC vs Credit Card: LOC typically lower rate than CC (19.90%+). LOC min payment = interest only. CC includes interest + portion of principal. Both revolving.
+
+=== PERSONAL LOANS ===
+Standard (Secured/Unsecured): Secured = collateral, lower rate, higher limits. Unsecured = no collateral, higher rate.
+Skip-a-payment: 1 per calendar year, no penalty.
+Debt Consolidation Loan: Combines multiple high-interest debts. ATB pays debts, client repays at lower rate.
+RRSP Loan: Borrow to maximize RRSP. Current-year or catch-up (up to $75k). Repay within 1 year ideally using tax refund.
+Car/Vehicle Loan: Secured by vehicle. Competitive rates.
+Overdraft Protection: 17.25%/yr. Min charge $4.00 or monthly interest. Application required.
+
+=== PRIME RATE & RATES ===
+ATB prime tracks Bank of Canada (2.25% as of Oct 2025). Current rates at atb.com/resources/rates.
+
+=== CUSTOMER SERVICE ===
+Main: 1-800-332-8383 (24/7 urgent; business hours general)
+CC activation: 1-866-904-9677
+Digital: personal.atb.com / ATB Personal app
+2FA mandatory for ATB Personal
+Tier 1 (agent handles): balances, transaction history, card lock/unlock, e-transfers, passwords, fee inquiries, product info
+Tier 2 (warm transfer): mortgage specialist, investment advisor, business banking, overdraft applications, complex loans, CC disputes
+Tier 3: formal complaint, ATB Ombudsman, OBSI
+Fraud: Lock card in app. Call 1-800-332-8383 immediately. ATB Online Banking Guarantee covers unauthorized access.
+
+=== ATB PROFILE ===
+Crown corporation, Province of Alberta. Founded 1938. 170+ branches, 800,000+ clients, $55B+ assets. Alberta only (incl. Banff, Jasper, Waterton). Deposits 100% guaranteed by Government of Alberta (NOT CDIC member). Largest financial institution based in Alberta.
+
+=== NEWCOMERS ===
+Fee waivers for landed immigrants in last 5 years. Credit Builder LOC. Students First LOC with AB co-borrower. Dedicated support at atb.com.
+
+=== FEES QUICK REFERENCE ===
+NSF: $10. e-Transfer send: $1.50 (free on unlimited accounts). Paper statements: fee now applies. Global transfers: $0-$15. In-branch (No-Fee Digital): $5. Foreign ABM: $5 outside Canada. Overdraft: min $4 or 17.25%/yr interest.`;
+
+const SYSTEM_PROMPT = `You are a real-time AI coaching assistant for ATB Financial customer service agents.
+
+Analyze the conversation and provide smart, grounded suggestions to help the agent respond accurately and helpfully.
+
+ATB Financial Knowledge Base:
+${ATB_KB}
+
+Return ONLY a JSON object (no markdown, no backticks, no extra text) with this structure:
+{
+  "intent": "2-4 word label",
+  "urgency": "low|medium|high",
+  "summary": "One sentence describing what customer needs",
+  "suggestedResponses": [
+    {"label": "Option label", "text": "Full response agent can send"}
+  ],
+  "keyFacts": ["Fact 1 from KB", "Fact 2", "Fact 3"],
+  "actions": ["Action 1", "Action 2"],
+  "escalate": false
+}
+
+If escalation needed, set escalate to: {"reason": "why", "to": "specialist type"}
+Keep suggestedResponses to 2-3. Key facts to 3-5. Actions to 2-3.
+Ground everything strictly in the ATB KB above.`;
+
+const DEMO_STARTERS = [
+  "I'm a student under 25 — what's the best account for me?",
+  "I need help with a mortgage. First-time buyer, have $40k saved.",
+  "Someone made unauthorized charges on my card!",
+  "I want to invest $10,000 in a GIC — what are my options?",
+  "I want to consolidate my credit card debt."
+];
+
+const INITIAL_MSGS = [
+  {role:"customer", content:"Hi, I just moved to Alberta from overseas. I need to open a bank account and also start building my credit score. What do you recommend?"}
+];
+</script>
+
+<div id="root" style="font-family:var(--font-sans);height:620px;display:flex;flex-direction:column;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;background:var(--color-background-primary)"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script>
+const {useState,useEffect,useRef,useCallback} = React;
+
+function Skel({w="100%",h=12,mb=6}){
+  return React.createElement('div',{className:'skel',style:{width:w,height:h,marginBottom:mb}});
+}
+
+function SuggCard({title,accent,children}){
+  const colors={blue:{bg:'var(--color-background-info)',c:'var(--color-text-info)'},green:{bg:'var(--color-background-success)',c:'var(--color-text-success)'},amber:{bg:'var(--color-background-warning)',c:'var(--color-text-warning)'},default:{bg:'var(--color-background-secondary)',c:'var(--color-text-secondary)'}};
+  const col=colors[accent||'default'];
+  return React.createElement('div',{style:{background:'var(--color-background-primary)',borderRadius:'var(--border-radius-md)',border:'0.5px solid var(--color-border-tertiary)',overflow:'hidden'}},
+    React.createElement('div',{style:{padding:'6px 12px',background:col.bg,borderBottom:'0.5px solid var(--color-border-tertiary)'}},
+      React.createElement('span',{style:{fontSize:11,fontWeight:500,color:col.c,letterSpacing:'0.05em'}},(title||'').toUpperCase())
+    ),
+    React.createElement('div',{style:{padding:'10px 12px'}},children)
+  );
+}
+
+function LoadingPanel(){
+  return React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:10}},
+    React.createElement('div',{style:{display:'flex',gap:6}},React.createElement(Skel,{w:'90px',h:22,mb:0}),React.createElement(Skel,{w:'70px',h:22,mb:0})),
+    React.createElement(Skel,{w:'100%',h:13}),React.createElement(Skel,{w:'80%',h:13}),
+    React.createElement('div',{style:{background:'var(--color-background-primary)',border:'0.5px solid var(--color-border-tertiary)',borderRadius:'var(--border-radius-md)',padding:'10px 12px'}},
+      React.createElement('div',{style:{height:10,marginBottom:8,background:'var(--color-background-info)',borderRadius:3,width:120,opacity:.4}}),
+      [0,1,2].map(i=>React.createElement('div',{key:i,style:{display:'flex',gap:8,marginBottom:5}},
+        React.createElement('div',{className:'skel',style:{width:4,height:4,borderRadius:'50%',marginTop:5,flexShrink:0}}),
+        React.createElement(Skel,{w:`${65+i*8}%`,h:11,mb:0})
+      ))
+    ),
+    React.createElement('div',{style:{background:'var(--color-background-primary)',border:'0.5px solid var(--color-border-tertiary)',borderRadius:'var(--border-radius-md)',padding:'10px 12px'}},
+      React.createElement('div',{style:{height:10,marginBottom:8,background:'var(--color-background-success)',borderRadius:3,width:100,opacity:.4}}),
+      [0,1].map(i=>React.createElement('div',{key:i,style:{display:'flex',gap:8,marginBottom:5}},
+        React.createElement('div',{className:'skel',style:{width:8,height:8,borderRadius:'50%',marginTop:2,flexShrink:0}}),
+        React.createElement(Skel,{w:`${70+i*10}%`,h:11,mb:0})
+      ))
+    )
+  );
+}
+
+function App(){
+  const [msgs,setMsgs]=useState(INITIAL_MSGS);
+  const [input,setInput]=useState('');
+  const [role,setRole]=useState('customer');
+  const [sugg,setSugg]=useState(null);
+  const [loading,setLoading]=useState(false);
+  const [error,setError]=useState(false);
+  const chatRef=useRef(null);
+  const inputRef=useRef(null);
+
+  useEffect(()=>{chatRef.current?.scrollTo({top:chatRef.current.scrollHeight,behavior:'smooth'});},[msgs]);
+  useEffect(()=>{fetchSugg(INITIAL_MSGS);},[]);
+
+  async function fetchSugg(messages){
+    setLoading(true);setSugg(null);setError(false);
+    const conv=messages.map(m=>(m.role==='customer'?'Customer':'Agent')+': '+m.content).join('\n');
+    try{
+      const r=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          model:'claude-sonnet-4-20250514',
+          max_tokens:900,
+          system:SYSTEM_PROMPT,
+          messages:[{role:'user',content:'Conversation:\n\n'+conv+'\n\nProvide agent coaching suggestions as JSON.'}]
+        })
+      });
+      const d=await r.json();
+      const t=(d.content?.[0]?.text||'{}').replace(/```json|```/g,'').trim();
+      setSugg(JSON.parse(t));
+    }catch(e){setError(true);}
+    setLoading(false);
+  }
+
+  function send(txt){
+    const text=(txt||input).trim();
+    if(!text)return;
+    const m={role,content:text};
+    const newMsgs=[...msgs,m];
+    setMsgs(newMsgs);
+    setInput('');
+    if(role==='customer')fetchSugg(newMsgs);
+  }
+
+  function useResp(text){setRole('agent');setInput(text);inputRef.current?.focus();}
+
+  const urgColor={high:{bg:'var(--color-background-danger)',c:'var(--color-text-danger)',border:'var(--color-border-danger)'},medium:{bg:'var(--color-background-warning)',c:'var(--color-text-warning)',border:'var(--color-border-warning)'},low:{bg:'var(--color-background-success)',c:'var(--color-text-success)',border:'var(--color-border-success)'}};
+
+  return React.createElement('div',{style:{display:'flex',flexDirection:'column',height:'100%',background:'var(--color-background-primary)'}},
+    // Header
+    React.createElement('div',{style:{display:'flex',alignItems:'center',padding:'10px 16px',borderBottom:'0.5px solid var(--color-border-tertiary)',gap:10,flexShrink:0}},
+      React.createElement('div',{style:{width:30,height:30,borderRadius:6,background:'#003DA5',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}},
+        React.createElement('svg',{width:16,height:16,viewBox:'0 0 16 16',fill:'none'},
+          React.createElement('rect',{x:1,y:5,width:14,height:8,rx:1,stroke:'white',strokeWidth:1.4}),
+          React.createElement('path',{d:'M4 5V4a4 4 0 018 0v1',stroke:'white',strokeWidth:1.4,fill:'none'}),
+          React.createElement('circle',{cx:8,cy:9,r:1.5,fill:'white'})
+        )
+      ),
+      React.createElement('div',{style:{flex:1}},
+        React.createElement('p',{style:{margin:0,fontWeight:500,fontSize:14,color:'var(--color-text-primary)'}}, 'ATB Agent Assist'),
+        React.createElement('p',{style:{margin:0,fontSize:11,color:'var(--color-text-secondary)'}}, 'AI coaching · Grounded in ATB Knowledge Base')
+      ),
+      React.createElement('div',{style:{display:'flex',alignItems:'center',gap:5}},
+        React.createElement('div',{style:{width:6,height:6,borderRadius:'50%',background:'#22c55e'}}),
+        React.createElement('span',{style:{fontSize:11,color:'var(--color-text-secondary)'}}, 'Live')
+      )
+    ),
+    // Body
+    React.createElement('div',{style:{display:'flex',flex:1,overflow:'hidden'}},
+      // Chat
+      React.createElement('div',{style:{display:'flex',flexDirection:'column',flex:'0 0 57%',borderRight:'0.5px solid var(--color-border-tertiary)',overflow:'hidden'}},
+        React.createElement('div',{ref:chatRef,style:{flex:1,overflowY:'auto',padding:'14px 12px',display:'flex',flexDirection:'column',gap:8}},
+          msgs.map((m,i)=>React.createElement('div',{key:i,className:'msg-appear',style:{display:'flex',justifyContent:m.role==='agent'?'flex-end':'flex-start',gap:7,alignItems:'flex-end'}},
+            m.role==='customer'&&React.createElement('div',{style:{width:26,height:26,borderRadius:'50%',background:'var(--color-background-info)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:10,fontWeight:500,color:'var(--color-text-info)',flexShrink:0}}, 'C'),
+            React.createElement('div',{style:{maxWidth:'78%',padding:'9px 12px',borderRadius:m.role==='agent'?'12px 4px 12px 12px':'4px 12px 12px 12px',background:m.role==='agent'?'var(--color-background-secondary)':'var(--color-background-info)',border:'0.5px solid var(--color-border-tertiary)',fontSize:13,lineHeight:1.55,color:m.role==='agent'?'var(--color-text-primary)':'var(--color-text-info)'}},
+              React.createElement('p',{style:{margin:0}}, m.content),
+              React.createElement('p',{style:{margin:'3px 0 0',fontSize:10,opacity:.55}}, m.role==='customer'?'Customer':'Agent')
+            ),
+            m.role==='agent'&&React.createElement('div',{style:{width:26,height:26,borderRadius:'50%',background:'var(--color-background-secondary)',border:'0.5px solid var(--color-border-secondary)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:10,fontWeight:500,color:'var(--color-text-secondary)',flexShrink:0}}, 'A')
+          )),
+          React.createElement('div',{style:{height:1}})
+        ),
+        // Demo starters
+        React.createElement('div',{style:{padding:'8px 12px',borderTop:'0.5px solid var(--color-border-tertiary)',display:'flex',gap:5,flexWrap:'wrap',background:'var(--color-background-secondary)'}},
+          React.createElement('span',{style:{fontSize:10,color:'var(--color-text-secondary)',alignSelf:'center',marginRight:2,flexShrink:0}},'Try:'),
+          DEMO_STARTERS.map((s,i)=>React.createElement('button',{key:i,onClick:()=>{setRole('customer');send(s);},style:{padding:'3px 8px',fontSize:10,background:'var(--color-background-primary)',border:'0.5px solid var(--color-border-tertiary)',borderRadius:100,cursor:'pointer',color:'var(--color-text-secondary)',fontFamily:'var(--font-sans)',whiteSpace:'nowrap'}}, s.length>30?s.slice(0,30)+'…':s))
+        ),
+        // Input
+        React.createElement('div',{style:{padding:'10px 12px',borderTop:'0.5px solid var(--color-border-tertiary)',background:'var(--color-background-primary)',flexShrink:0}},
+          // Role toggle
+          React.createElement('div',{style:{display:'flex',gap:3,marginBottom:8,background:'var(--color-background-secondary)',borderRadius:'var(--border-radius-md)',padding:3,width:'fit-content'}},
+            ['customer','agent'].map(r=>React.createElement('button',{key:r,className:'role-btn',onClick:()=>setRole(r),style:{padding:'4px 10px',borderRadius:'calc(var(--border-radius-md) - 2px)',border:role===r?'0.5px solid var(--color-border-tertiary)':'0.5px solid transparent',cursor:'pointer',fontSize:11,fontWeight:500,fontFamily:'var(--font-sans)',background:role===r?(r==='customer'?'var(--color-background-info)':'var(--color-background-primary)'):'transparent',color:role===r?(r==='customer'?'var(--color-text-info)':'var(--color-text-primary)'):'var(--color-text-secondary)'}},
+              r==='customer'?'As Customer':'As Agent'
+            ))
+          ),
+          React.createElement('div',{style:{display:'flex',gap:8}},
+            React.createElement('textarea',{ref:inputRef,value:input,onChange:e=>setInput(e.target.value),onKeyDown:e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}},placeholder:role==='customer'?'Type customer message…':'Type agent response…',rows:2,style:{flex:1,resize:'none',borderRadius:'var(--border-radius-md)',border:'0.5px solid var(--color-border-secondary)',padding:'8px 10px',fontSize:13,fontFamily:'var(--font-sans)',background:'var(--color-background-primary)',color:'var(--color-text-primary)',lineHeight:1.5}}),
+            React.createElement('button',{className:'send-btn',onClick:()=>send(),disabled:!input.trim(),style:{padding:'0 14px',background:role==='customer'?'#003DA5':'var(--color-background-secondary)',color:role==='customer'?'white':'var(--color-text-primary)',border:'0.5px solid '+(role==='customer'?'#003DA5':'var(--color-border-secondary)'),borderRadius:'var(--border-radius-md)',cursor:input.trim()?'pointer':'not-allowed',fontSize:13,fontFamily:'var(--font-sans)',fontWeight:500,opacity:input.trim()?1:.45,transition:'transform .1s'}},'Send')
+          )
+        )
+      ),
+      // Suggestions panel
+      React.createElement('div',{style:{flex:1,overflowY:'auto',padding:14,background:'var(--color-background-secondary)',display:'flex',flexDirection:'column',gap:10}},
+        React.createElement('div',{style:{display:'flex',alignItems:'center',gap:6,marginBottom:2}},
+          React.createElement('svg',{width:12,height:12,viewBox:'0 0 12 12',fill:'none'},
+            React.createElement('circle',{cx:6,cy:6,r:5,stroke:'var(--color-text-secondary)',strokeWidth:1.2}),
+            React.createElement('path',{d:'M6 4v4M6 3v.5',stroke:'var(--color-text-secondary)',strokeWidth:1.2,strokeLinecap:'round'})
+          ),
+          React.createElement('span',{style:{fontSize:11,fontWeight:500,color:'var(--color-text-secondary)',letterSpacing:'0.06em'}}, 'AGENT COACHING')
+        ),
+        loading&&React.createElement(LoadingPanel,null),
+        !loading&&error&&React.createElement('div',{style:{padding:'10px 12px',borderRadius:'var(--border-radius-md)',background:'var(--color-background-danger)',border:'0.5px solid var(--color-border-danger)',fontSize:12,color:'var(--color-text-danger)'}}, 'Failed to generate suggestions. Please try again.'),
+        !loading&&sugg&&!error&&React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:10}},
+          // Badges
+          React.createElement('div',{style:{display:'flex',gap:6,flexWrap:'wrap'}},
+            React.createElement('span',{style:{padding:'3px 10px',borderRadius:100,fontSize:11,fontWeight:500,background:'var(--color-background-info)',color:'var(--color-text-info)',border:'0.5px solid var(--color-border-info)'}}, sugg.intent||'General'),
+            sugg.urgency&&sugg.urgency!=='low'&&React.createElement('span',{style:{padding:'3px 10px',borderRadius:100,fontSize:11,fontWeight:500,background:(urgColor[sugg.urgency]||urgColor.low).bg,color:(urgColor[sugg.urgency]||urgColor.low).c,border:'0.5px solid '+(urgColor[sugg.urgency]||urgColor.low).border}}, sugg.urgency==='high'?'High Priority':'Medium Priority')
+          ),
+          sugg.summary&&React.createElement('p',{style:{margin:0,fontSize:12,color:'var(--color-text-secondary)',lineHeight:1.55}}, sugg.summary),
+          // Suggested responses
+          sugg.suggestedResponses?.length>0&&React.createElement(SuggCard,{title:'Suggested Responses',accent:'blue'},
+            sugg.suggestedResponses.map((r,i)=>React.createElement('div',{key:i,className:'resp-card',onClick:()=>useResp(r.text),style:{padding:'8px 10px',borderRadius:'var(--border-radius-md)',border:'0.5px solid var(--color-border-tertiary)',background:'var(--color-background-secondary)',marginBottom:i<sugg.suggestedResponses.length-1?6:0,cursor:'pointer'}},
+              React.createElement('p',{style:{margin:'0 0 3px',fontSize:10,fontWeight:500,color:'var(--color-text-info)'}}, r.label),
+              React.createElement('p',{style:{margin:0,fontSize:12,color:'var(--color-text-secondary)',lineHeight:1.5}}, r.text)
+            ))
+          ),
+          // Key facts
+          sugg.keyFacts?.length>0&&React.createElement(SuggCard,{title:'Relevant ATB Facts',accent:'default'},
+            sugg.keyFacts.map((f,i)=>React.createElement('div',{key:i,style:{display:'flex',gap:7,marginBottom:i<sugg.keyFacts.length-1?5:0}},
+              React.createElement('div',{style:{width:4,height:4,borderRadius:'50%',background:'var(--color-text-secondary)',marginTop:6,flexShrink:0,opacity:.6}}),
+              React.createElement('p',{style:{margin:0,fontSize:12,color:'var(--color-text-secondary)',lineHeight:1.5}}, f)
+            ))
+          ),
+          // Actions
+          sugg.actions?.length>0&&React.createElement(SuggCard,{title:'Recommended Actions',accent:'green'},
+            sugg.actions.map((a,i)=>React.createElement('div',{key:i,style:{display:'flex',gap:7,marginBottom:i<sugg.actions.length-1?5:0}},
+              React.createElement('span',{style:{fontSize:12,color:'var(--color-text-success)',flexShrink:0,lineHeight:1.5}}, '→'),
+              React.createElement('p',{style:{margin:0,fontSize:12,color:'var(--color-text-secondary)',lineHeight:1.5}}, a)
+            ))
+          ),
+          // Escalation
+          sugg.escalate&&typeof sugg.escalate==='object'&&React.createElement('div',{style:{padding:'10px 12px',borderRadius:'var(--border-radius-md)',background:'var(--color-background-warning)',border:'0.5px solid var(--color-border-warning)'}},
+            React.createElement('p',{style:{margin:'0 0 4px',fontSize:11,fontWeight:500,color:'var(--color-text-warning)',letterSpacing:'0.05em'}},'ESCALATION RECOMMENDED'),
+            React.createElement('p',{style:{margin:'0 0 3px',fontSize:12,color:'var(--color-text-warning)',lineHeight:1.4}}, sugg.escalate.reason),
+            React.createElement('p',{style:{margin:0,fontSize:12,fontWeight:500,color:'var(--color-text-warning)'}}, 'Transfer to: '+sugg.escalate.to)
+          )
+        ),
+        !loading&&!sugg&&!error&&React.createElement('div',{style:{textAlign:'center',padding:'24px 16px',color:'var(--color-text-secondary)',fontSize:13}},
+          React.createElement('p',{style:{margin:'0 0 6px',fontWeight:500}}, 'Suggestions appear here'),
+          React.createElement('p',{style:{margin:0,lineHeight:1.5}}, 'Send a customer message to see AI coaching grounded in the ATB knowledge base')
+        )
+      )
+    )
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+</script>
