@@ -67,9 +67,17 @@ jobs:
                   retries: 3
             EOF
 
+            # Detect Docker Compose version
+            if docker compose version >/dev/null 2>&1; then 
+              COMPOSE='docker compose'
+            else 
+              COMPOSE='docker-compose'
+            fi
+            echo "Using compose command: $COMPOSE"
+
             # Pull and restart
-            docker compose pull
-            docker compose up -d --remove-orphans
+            $COMPOSE pull
+            $COMPOSE up -d --remove-orphans
             
             # Final Status
             docker ps | grep atb-agent-assist
