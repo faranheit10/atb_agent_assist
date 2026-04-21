@@ -22,7 +22,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).parent
 KB_DIR = BASE_DIR / "data" / "kb"
 CHROMA_DIR = BASE_DIR / "chroma_db"
-BM25_INDEX_PATH = BASE_DIR / "bm25_index.json"
+BM25_INDEX_PATH = BASE_DIR / "data" / "bm25_index.json"
 INGESTION_STATE_PATH = BASE_DIR / "data" / "ingestion_state.json"
 
 # ---------------------------------------------------------------------------

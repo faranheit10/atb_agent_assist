@@ -14,8 +14,6 @@ services:
       # Data folders
       - ./data:/app/data
       - ./chroma_db:/app/chroma_db
-      # Persistence for specific indices if not in /data
-      - ./bm25_index.json:/app/bm25_index.json
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
       interval: 30s
