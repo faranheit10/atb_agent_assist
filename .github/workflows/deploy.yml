@@ -39,6 +39,7 @@ jobs:
           password: ${{ secrets.LINODE_SSH_PASSWORD }}
           source: "data/kb/*.txt"
           target: "/root/atb_agent_assist/"
+          strip_components: 0
 
       - name: Deploy and Ingest via SSH
         uses: appleboy/ssh-action@v0.1.10
@@ -89,7 +90,7 @@ jobs:
             
             # Trigger background ingestion
             sleep 5
-            curl -X POST http://localhost:8001/ingest
+            curl -X POST http://localhost:3001/ingest
             
             # Final Status
             docker ps | grep atb-agent-assist
