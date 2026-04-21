@@ -61,14 +61,17 @@ def _normalise(vec: list[float]) -> list[float]:
     reraise=True,
 )
 def _embed_batch(texts: list[str], task_type: TaskType) -> list[list[float]]:
-    """Embed a single batch of texts (≤100) with retry."""
-    result = _client.models.embed_content(
+    """Embed a single batch of texts (≤100) using the SDK's batch method."""
+    # The new SDK uses batch_embed_contents for multiple strings
+    result = _client.models.batch_embed_contents(
         model=EMBEDDING_MODEL,
-        contents=texts,
-        config=genai_types.EmbedContentConfig(
-            task_type=task_type,
-            output_dimensionality=EMBEDDING_DIM,
-        ),
+        requests=[
+            genai_types.EmbedContentRequest(
+                content=t,
+                task_type=task_type,
+                dimensionality=EMBEDDING_DIM
+            ) for t in texts
+        ]
     )
     return [_normalise(e.values) for e in result.embeddings]
 
@@ -80,15 +83,17 @@ def _embed_batch(texts: list[str], task_type: TaskType) -> list[list[float]]:
     reraise=True,
 )
 async def _async_embed_batch(texts: list[str], task_type: TaskType) -> list[list[float]]:
-    """Embed a single batch of texts (≤100) asynchronously with retry."""
+    """Embed a single batch of texts (≤100) asynchronously."""
     aclient = _get_aclient()
-    result = await aclient.models.embed_content(
+    result = await aclient.models.batch_embed_contents(
         model=EMBEDDING_MODEL,
-        contents=texts,
-        config=genai_types.EmbedContentConfig(
-            task_type=task_type,
-            output_dimensionality=EMBEDDING_DIM,
-        ),
+        requests=[
+            genai_types.EmbedContentRequest(
+                content=t,
+                task_type=task_type,
+                dimensionality=EMBEDDING_DIM
+            ) for t in texts
+        ]
     )
     return [_normalise(e.values) for e in result.embeddings]
 
