@@ -412,15 +412,15 @@ async def run_background_ingest(force: bool = False):
 @app.get("/api/kb", tags=["Knowledge Base"])
 async def list_kb_files():
     """List all text files in the knowledge base directory with ingestion status."""
-    kb_dir = Path("data/kb")
-    if not kb_dir.exists():
+    from pipeline.ingestion import KB_DIR, load_ingestion_state
+    
+    if not KB_DIR.exists():
         return []
     
-    from pipeline.ingestion import load_ingestion_state
     state = load_ingestion_state()
-    
     files = []
-    for f in kb_dir.glob("*.txt"):
+    
+    for f in KB_DIR.glob("*.txt"):
         filename = f.name
         cached = state.get(filename) # Use .get() without default to check existence
         

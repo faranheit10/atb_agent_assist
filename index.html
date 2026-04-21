@@ -771,7 +771,7 @@ function KBView() {
 
     // Polling for processing files
     useEffect(() => {
-        const hasProcessing = docs.some(d => d.status === 'processing' || d.status === 'new');
+        const hasProcessing = docs.some(d => d.status === 'processing' || d.status === 'indexing' || d.status === 'new');
         if (hasProcessing) {
             const timer = setInterval(fetchDocs, 2000);
             return () => clearInterval(timer);
