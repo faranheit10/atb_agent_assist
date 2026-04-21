@@ -31,7 +31,16 @@ jobs:
       - name: Checkout code (for docker-compose.yml)
         uses: actions/checkout@v3
 
-      - name: Deploy to Linode via SSH
+      - name: Sync Knowledge Base files to Linode
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: 172.233.88.49
+          username: root
+          password: ${{ secrets.LINODE_SSH_PASSWORD }}
+          source: "data/kb/*.txt"
+          target: "/root/atb_agent_assist/"
+
+      - name: Deploy and Ingest via SSH
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: 172.233.88.49
@@ -77,6 +86,10 @@ jobs:
             # Pull and restart
             $COMPOSE pull
             $COMPOSE up -d --remove-orphans
+            
+            # Trigger background ingestion
+            sleep 5
+            curl -X POST http://localhost:8001/ingest
             
             # Final Status
             docker ps | grep atb-agent-assist

@@ -888,7 +888,7 @@ function MainApp() {
     const [collapsed, setCollapsed] = useState(false);
     const [theme, setTheme] = useState(localStorage.getItem('atb_theme') || 'light');
     const [view, setView] = useState('assist');
-    const [msgs, setMsgs] = useState([{ role: "customer", content: "Hi! I need help understanding the fees for the Generation account." }]);
+    const [msgs, setMsgs] = useState([]);
     const [sugg, setSugg] = useState(null);
     const [loading, setLoading] = useState(false);
     const [health, setHealth] = useState(null);
@@ -900,11 +900,11 @@ function MainApp() {
 
     useEffect(() => {
         fetch(`${API_BASE}/health`).then(r => r.json()).then(setHealth).catch(() => setHealth({status:'offline'}));
-        fetchSugg(msgs);
+        if (msgs.length > 0) fetchSugg(msgs);
     }, []);
 
     const fetchSugg = async (currentMsgs) => {
-        if (currentMsgs[currentMsgs.length-1].role !== 'customer') return;
+        if (!currentMsgs.length || currentMsgs[currentMsgs.length-1].role !== 'customer') return;
         setLoading(true); setSugg(null);
         try {
             const response = await fetch(`${API_BASE}/suggest_stream`, {
