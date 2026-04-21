@@ -88,9 +88,5 @@ jobs:
             $COMPOSE pull
             $COMPOSE up -d --remove-orphans
             
-            # Trigger background ingestion
-            sleep 5
-            curl -X POST http://localhost:3001/ingest
-            
             # Final Status
             docker ps | grep atb-agent-assist

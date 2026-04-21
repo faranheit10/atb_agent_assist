@@ -72,6 +72,7 @@ def get_store() -> KnowledgeStore:
     global _store
     if _store is None:
         _store = KnowledgeStore()
+    app.state.store = _store
     return _store
 
 
@@ -89,8 +90,9 @@ async def lifespan(app: FastAPI):
     count = _store.count()
     if count == 0:
         console.print(
-            "[yellow][!] Vector store is empty. Run [bold]python ingest.py[/bold] first.[/yellow]"
+            "[yellow][!] Vector store is empty. Starting automatic background ingestion...[/yellow]"
         )
+        asyncio.create_task(run_background_ingest(force=True))
     else:
         console.print(f"[green][OK] Vector store ready - {count} knowledge chunks loaded[/green]")
     yield
@@ -347,42 +349,47 @@ async def stats() -> dict:
     }
 
 
-@app.post("/ingest", response_model=IngestResponse, tags=["Admin"])
-async def ingest_endpoint(
-    background_tasks: BackgroundTasks, 
-    force: bool = Query(False, description="Force re-ingestion of all files")
-) -> IngestResponse:
-    """
-    Trigger a fresh ingestion of all KB files.
-    Runs in the background — check /api/kb status to see when it's ready.
-    """
-    def run_ingestion():
-        from pipeline.ingestion import ingest_all_kb_files, load_ingestion_state
-        from pipeline.embedder import embed_documents, embed_summaries
-        
-        console.print(f"[cyan]Background Global Ingestion started (force={force}) …[/cyan]")
-        
-        # Mark all files in directory as potentially processing if we are doing a broad sweep
-        kb_dir = Path("data/kb")
-        all_files = [f.name for f in kb_dir.glob("*.txt")]
-        for f in all_files:
-            _kb_status[f] = {"status": "processing", "progress": 10}
+@app.post("/ingest", response_model=IngestResponse, tags=["System"])
+async def trigger_ingest(background_tasks: BackgroundTasks, force: bool = False):
+    """Trigger background ingestion of all files in the KB directory."""
+    background_tasks.add_task(run_background_ingest, force=force)
+    return IngestResponse(
+        message="Ingestion started in background. Check KB dashboard for status.",
+        units_ingested=0,
+    )
 
-        units = ingest_all_kb_files(force=force)
+async def run_background_ingest(force: bool = False):
+    """The core ingestion worker used by startup and API."""
+    import asyncio
+    from pipeline.ingestion import ingest_all_kb_files, KB_DIR
+    from pipeline.embedder import embed_documents, embed_summaries
+    
+    all_files = [f.name for f in KB_DIR.glob("*.txt")]
+    for f in all_files:
+        _kb_status[f] = {"status": "indexing", "progress": 10}
+        
+    try:
+        # 1. Structure documents with Gemini
+        # We run this in a threadpool because it's synchronous/blocking
+        loop = asyncio.get_event_loop()
+        units = await loop.run_in_executor(None, ingest_all_kb_files, KB_DIR, force)
         
         if units:
             # Map units to their source files to update progress
             files_involved = list(set(u.source_file for u in units))
             for f in files_involved: _kb_status[f]["progress"] = 60
             
-            chunk_embs = embed_documents([u.atomic_text for u in units])
+            # 2. Embed chunks
+            chunk_embs = await loop.run_in_executor(None, embed_documents, [u.atomic_text for u in units])
             for f in files_involved: _kb_status[f]["progress"] = 80
             
-            summary_embs = embed_summaries([u.summary for u in units])
+            # 3. Embed summaries
+            summary_embs = await loop.run_in_executor(None, embed_summaries, [u.summary for u in units])
             for f in files_involved: _kb_status[f]["progress"] = 90
             
+            # 4. Storage
             store = get_store()
-            store.upsert_units(units, chunk_embs, summary_embs, reset_bm25=force)
+            await loop.run_in_executor(None, store.upsert_units, units, chunk_embs, summary_embs, force)
             
             for f in files_involved:
                 _kb_status[f] = {"status": "indexed", "progress": 100}
@@ -392,12 +399,11 @@ async def ingest_endpoint(
             # Nothing processed (everything skipped)
             for f in all_files:
                 _kb_status[f] = {"status": "indexed", "progress": 100}
-
-    background_tasks.add_task(run_ingestion)
-    return IngestResponse(
-        message="Ingestion started in background. Check KB dashboard for status.",
-        units_ingested=0,
-    )
+    except Exception as e:
+        console.print(f"[red]Background ingestion FAILED: {e}[/red]")
+        for f in all_files:
+            if _kb_status.get(f, {}).get("status") == "indexing":
+                _kb_status[f] = {"status": "error", "progress": 0}
 
 
 # --- Knowledge Base Endpoints ---
