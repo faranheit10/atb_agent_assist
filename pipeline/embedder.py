@@ -61,19 +61,19 @@ def _normalise(vec: list[float]) -> list[float]:
     reraise=True,
 )
 def _embed_batch(texts: list[str], task_type: TaskType) -> list[list[float]]:
-    """Embed a single batch of texts (≤100) using the SDK's batch method."""
-    # The new SDK uses batch_embed_contents for multiple strings
-    result = _client.models.batch_embed_contents(
-        model=EMBEDDING_MODEL,
-        requests=[
-            genai_types.EmbedContentRequest(
-                content=t,
+    """Embed a single batch of texts (≤100)."""
+    embeddings = []
+    for text in texts:
+        result = _client.models.embed_content(
+            model=EMBEDDING_MODEL,
+            contents=text,
+            config=genai_types.EmbedContentConfig(
                 task_type=task_type,
-                dimensionality=EMBEDDING_DIM
-            ) for t in texts
-        ]
-    )
-    return [_normalise(e.values) for e in result.embeddings]
+                output_dimensionality=EMBEDDING_DIM,
+            ),
+        )
+        embeddings.append(_normalise(result.embeddings[0].values))
+    return embeddings
 
 
 @retry(
@@ -84,18 +84,21 @@ def _embed_batch(texts: list[str], task_type: TaskType) -> list[list[float]]:
 )
 async def _async_embed_batch(texts: list[str], task_type: TaskType) -> list[list[float]]:
     """Embed a single batch of texts (≤100) asynchronously."""
+    import asyncio
     aclient = _get_aclient()
-    result = await aclient.models.batch_embed_contents(
-        model=EMBEDDING_MODEL,
-        requests=[
-            genai_types.EmbedContentRequest(
-                content=t,
+    
+    async def embed_one(text):
+        result = await aclient.models.embed_content(
+            model=EMBEDDING_MODEL,
+            contents=text,
+            config=genai_types.EmbedContentConfig(
                 task_type=task_type,
-                dimensionality=EMBEDDING_DIM
-            ) for t in texts
-        ]
-    )
-    return [_normalise(e.values) for e in result.embeddings]
+                output_dimensionality=EMBEDDING_DIM,
+            ),
+        )
+        return _normalise(result.embeddings[0].values)
+    
+    return await asyncio.gather(*(embed_one(t) for t in texts))
 
 
 def embed_texts(

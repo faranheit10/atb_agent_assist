@@ -846,9 +846,9 @@ function KBView() {
                             React.createElement(Icon, { name: 'trash', size: 14 }), "Delete Document"
                         )
                     ),
-                    React.createElement('span', { className: 'kb-item-meta' }, d.status === 'processing' ? 'Indexing...' : `${d.size_kb} KB · ${d.last_modified}`),
+                    React.createElement('span', { className: 'kb-item-meta' }, (d.status === 'processing' || d.status === 'indexing') ? 'Indexing...' : `${d.size_kb} KB · ${d.last_modified}`),
                     
-                    d.status === 'processing' && React.createElement('div', { className: 'progress-container' },
+                    (d.status === 'processing' || d.status === 'indexing') && React.createElement('div', { className: 'progress-container' },
                         React.createElement('div', { className: 'progress-fill', style: { width: `${d.progress}%` } })
                     ),
                     
