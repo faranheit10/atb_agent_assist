@@ -409,7 +409,7 @@ async def run_background_ingest(force: bool = False):
 
 # --- Knowledge Base Endpoints ---
 
-@app.get("/api/kb", tags=["Knowledge Base"])
+@app.get("/kb_internal", tags=["Knowledge Base"])
 async def list_kb_files():
     """List all text files in the knowledge base directory with ingestion status."""
     from pipeline.ingestion import KB_DIR, load_ingestion_state
@@ -450,7 +450,7 @@ async def list_kb_files():
     return sorted(files, key=lambda x: x["filename"])
 
 
-@app.post("/api/kb/upload", tags=["Knowledge Base"])
+@app.post("/kb_internal/upload", tags=["Knowledge Base"])
 async def upload_kb_file(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
@@ -517,7 +517,7 @@ async def upload_kb_file(
     return {"message": "Upload successful, indexing started.", "filename": filename}
 
 
-@app.get("/api/kb/{filename}", tags=["Knowledge Base"])
+@app.get("/kb_internal/{filename}", tags=["Knowledge Base"])
 async def get_kb_content(filename: str):
     """Get the raw content of a specific KB file."""
     # Security: prevent directory traversal
@@ -535,7 +535,7 @@ async def get_kb_content(filename: str):
         raise HTTPException(status_code=500, detail=f"Error reading file: {str(e)}")
 
 
-@app.delete("/api/kb/{filename}", tags=["Knowledge Base"])
+@app.delete("/kb_internal/{filename}", tags=["Knowledge Base"])
 async def delete_kb_file(filename: str):
     """Delete a file from the KB and purge its chunks from the vector store."""
     # Security: prevent directory traversal

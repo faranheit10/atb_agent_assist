@@ -739,7 +739,7 @@ function KBView() {
         if (isDeleting) return;
         setIsDeleting(true);
         try {
-            const resp = await fetch(`${API_BASE}/api/kb/${filename}`, { method: 'DELETE' });
+            const resp = await fetch(`${API_BASE}/kb_internal/${filename}`, { method: 'DELETE' });
             if (resp.ok) {
                 setConfirmDelete(null);
                 setMenuOpen(null);
@@ -760,7 +760,7 @@ function KBView() {
     const fileInputRef = useRef();
 
     const fetchDocs = async () => {
-        const r = await fetch(`${API_BASE}/api/kb`);
+        const r = await fetch(`${API_BASE}/kb_internal`);
         const data = await r.json();
         setDocs(data);
     };
@@ -785,7 +785,7 @@ function KBView() {
         setSelected(doc);
         setFetchLoading(true);
         try {
-            const r = await fetch(`${API_BASE}/api/kb/${doc.filename}`);
+            const r = await fetch(`${API_BASE}/kb_internal/${doc.filename}`);
             const d = await r.json();
             setContent(d.content);
         } finally { setFetchLoading(false); }
@@ -796,7 +796,7 @@ function KBView() {
         formData.append('file', file);
         
         try {
-            const resp = await fetch(`${API_BASE}/api/kb/upload?overwrite=${overwrite}`, {
+            const resp = await fetch(`${API_BASE}/kb_internal/upload?overwrite=${overwrite}`, {
                 method: 'POST',
                 body: formData
             });
